@@ -2,7 +2,7 @@
 
 ## About
 
-Sitecore Publishing Report Kit (SPRK) is a tool for logging all publishing activity in Sitecore at the item level.
+Sitecore Publish Reporting Kit (SPRK) is a tool for logging all publishing activity in Sitecore at the item level.
 
 * Current version: 1.0.0
 * On the web: [SPRK (www.brandonbruno.com)](https://www.brandonbruno.com/sections/development/sprk.html)
