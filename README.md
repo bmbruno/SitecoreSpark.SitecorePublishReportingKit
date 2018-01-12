@@ -29,7 +29,7 @@ Sitecore Publish Reporting Kit (SPRK) is a tool for logging all publishing activ
 
 #### 1. Installation ####
 
-SPRK is installed via a Sitecore package zip file. Install the package "Sitecore Publish Reporting Kit-1.0.0.zip" in the instance of Sitecore that handles content publishing. This is most likely your content management instance.
+SPRK is installed via a Sitecore package zip file. Install the package "Sitecore Publish Reporting Kit 1.0.0.zip" in the instance of Sitecore that handles content publishing. This is most likely your content management instance.
 
 #### 2. Configuration ####
 
