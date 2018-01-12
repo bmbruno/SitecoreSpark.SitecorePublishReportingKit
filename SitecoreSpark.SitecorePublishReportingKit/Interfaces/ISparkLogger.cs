@@ -14,14 +14,14 @@
         /// Should write the provided data to the log buffer for the given log key.
         /// </summary>
         /// <param name="logKey">Key of the current log.</param>
-        /// <param name="mode">Publish mode description.</param>
         /// <param name="itemID">ID of the published item.</param>
+        /// <param name="mode">Publish mode description.</param>
         /// <param name="result">Publish result decription.</param>
         /// <param name="username">Username of who performed the publish.</param>
         /// <param name="sourceDB">Source content database.</param>
         /// <param name="targetDB">Target content database.</param>
         /// <param name="datetime">Formatted date/time of publish.</param>
-        void AddToLog(int logKey, string mode, string itemID, string result, string username, string sourceDB, string targetDB, string datetime);
+        void AddToLog(int logKey, string itemID, string mode, string result, string username, string sourceDB, string targetDB, string datetime);
 
         /// <summary>
         /// Should remove the current in-memory log buffer for the given log key.

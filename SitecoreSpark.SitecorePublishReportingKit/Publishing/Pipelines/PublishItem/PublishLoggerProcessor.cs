@@ -40,8 +40,8 @@ namespace SitecoreSpark.SPRK.Publishing.Pipelines.PublishItem
                     {
                         _logger.AddToLog(
                             logKey.Value,
-                            context.PublishOptions.Mode.ToString(),
                             context.ItemId.ToString(),
+                            context.PublishOptions.Mode.ToString(),
                             context.Result.Operation.ToString(),
                             context.User.Name,
                             context.PublishOptions.SourceDatabase.Name,
