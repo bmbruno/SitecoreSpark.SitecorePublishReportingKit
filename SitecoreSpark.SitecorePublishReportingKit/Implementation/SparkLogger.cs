@@ -41,7 +41,7 @@ namespace SitecoreSpark.SPRK
         public int StartLog(string logFolderPath, string logFilePrefix)
         {
             Assert.IsNotNullOrEmpty(logFolderPath, "'logFolderPath' cannot be null or empty.");
-            Assert.IsNotNullOrEmpty(logFilePrefix, "'logFolderPath' cannot be null or empty.");
+            Assert.IsNotNullOrEmpty(logFilePrefix, "'logFilePrefix' cannot be null or empty.");
 
             // Ensure log buffer is ready
             this.InitializeLogBuffer();
