@@ -62,14 +62,14 @@ namespace SitecoreSpark.SPRK
         /// Creates a log entry for the given item and related information and stores it in the log buffer for the given logKey.
         /// </summary>
         /// <param name="logKey">Key of the current log.</param>
-        /// <param name="mode">Publish mode description.</param>
         /// <param name="itemID">ID of the published item.</param>
+        /// <param name="mode">Publish mode description.</param>
         /// <param name="result">Publish result decription.</param>
         /// <param name="username">Username of who performed the publish.</param>
         /// <param name="sourceDB">Source content database.</param>
         /// <param name="targetDB">Target content database.</param>
         /// <param name="datetime">Formatted date/time of publish.</param>
-        public void AddToLog(int logKey, string mode, string itemID, string result, string username, string sourceDB, string targetDB, string datetime)
+        public void AddToLog(int logKey, string itemID, string mode, string result, string username, string sourceDB, string targetDB, string datetime)
         {
             Assert.ArgumentCondition((logKey > 0), "logKey", "LogKey must be a positive integer; if it is 0, there may be a problem with the log or the publishing context.");
 
