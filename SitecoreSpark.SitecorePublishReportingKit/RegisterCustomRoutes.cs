@@ -17,7 +17,7 @@ namespace SitecoreSpark.SPRK
 
         public virtual void Register()
         {
-            RouteTable.Routes.MapRoute("SitecoreSpark.SPRK.Report", "sprk/{controller}/{action}/{id}", new { controller = "Report", action = "Index", id = UrlParameter.Optional });
+            RouteTable.Routes.MapRoute("SitecoreSpark.SPRK.Report", "sitecore/sprk/{controller}/{action}/{id}", new { controller = "Report", action = "Index", id = UrlParameter.Optional });
         }
     }
 }
