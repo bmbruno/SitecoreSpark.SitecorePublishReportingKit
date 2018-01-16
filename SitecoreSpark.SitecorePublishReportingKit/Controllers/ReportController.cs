@@ -9,6 +9,15 @@ namespace SitecoreSpark.SPRK.Controllers
     [Authorize]
     public class ReportController : Controller
     {
+        /// <summary>
+        /// Determines if the current user is an admin. Checks against current Sitecore context.
+        /// </summary>
+        /// <returns>True or false.</returns>
+        private bool UserIsAdmin()
+        {
+            return Sitecore.Context.User.IsAdministrator;
+        }
+
         public ActionResult Index()
         {
             return View("~/Views/SPRK/Report/Index.cshtml");
