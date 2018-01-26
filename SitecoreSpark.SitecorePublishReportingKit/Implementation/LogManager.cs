@@ -30,5 +30,14 @@ namespace SitecoreSpark.SPRK.Implementation
                 _logFileNames.Add(Path.GetFileName(allFiles[i]));
             }
         }
+
+        /// <summary>
+        /// Returns the list of log file names.
+        /// </summary>
+        /// <returns>Array of log file names.</returns>
+        public string[] GetLogFilenames()
+        {
+            return _logFileNames.ToArray<string>();
+        }
     }
 }
