@@ -9,7 +9,8 @@ namespace SitecoreSpark.SPRK.Implementation
 {
     public class LogManager : ILogManager
     {
-        private string[] _logFileNames;
+        private List<string> _logFileNames;
+        private string logDateFormat = "yyyyMMdd";
 
         /// <summary>
         /// Initalizes local variables and runs other setup tasks.
@@ -18,10 +19,16 @@ namespace SitecoreSpark.SPRK.Implementation
         /// <param name="logNamePrefix">Prefix of log file names.</param>
         public void Initialize (string logFolderPath, string logNamePrefix)
         {
-            // TODO: Load all files matching pattern
+            // Variable init
+            _logFileNames = new List<string>();
 
-            // TODO: Build list of full file paths
-            
+            // Load all files matching filename prefix pattern
+            var allFiles = Directory.GetFiles(logFolderPath, $"{logNamePrefix}*");
+
+            for (int i = 0; i < allFiles.Length; i++)
+            {
+                _logFileNames.Add(Path.GetFileName(allFiles[i]));
+            }
         }
     }
 }
