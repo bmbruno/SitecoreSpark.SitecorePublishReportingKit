@@ -1,4 +1,5 @@
 ﻿using SitecoreSpark.SPRK.Interfaces;
+using SitecoreSpark.SPRK.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,9 +11,9 @@ namespace SitecoreSpark.SPRK.Controllers
     [Authorize]
     public class ReportController : Controller
     {
-        private readonly ILogManager _logManager;
+        private readonly ILogManager<LogItem> _logManager;
 
-        public ReportController(ILogManager logManager)
+        public ReportController(ILogManager<LogItem> logManager)
         {
             _logManager = logManager;
 
@@ -33,19 +34,11 @@ namespace SitecoreSpark.SPRK.Controllers
         public ActionResult Index()
         {
             // Load list of log files
+            string[] filenames = _logManager.GetLogFilenames();
+
+            ViewBag.Filenames = filenames;
 
             return View("~/Views/SPRK/Report/Index.cshtml");
-        }
-
-        public ActionResult Find()
-        {
-            return View("~/Views/SPRK/Report/Find.cshtml");
-        }
-
-        [HttpPost]
-        public ActionResult Find(int id)
-        {
-            return View("~/Views/SPRK/Report/Find.cshtml");
         }
 
         public ActionResult ViewLog(string logDate)

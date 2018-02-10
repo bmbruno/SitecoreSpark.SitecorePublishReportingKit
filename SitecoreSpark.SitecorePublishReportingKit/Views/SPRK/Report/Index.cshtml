@@ -2,20 +2,27 @@
     Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
     ViewBag.Title = "Index";
 }
+<h2>Select a Log</h2>
 
-<h2>View Log</h2>
 
-<select>
-    <option value=""></option>
-</select>
+<table>
+    <thead>
+        <tr>
+            <th>Log Date</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var filename in ViewBag.Filenames)
+        {
+            <tr>
+                <td>@filename</td>
+                <td>
+                    <a href="javascript://">View</a>
+                    <a href="javascript://">Raw</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
 
-<h2>Search Logs</h2>
-
-Field:
-<select>
-    <option value="">All</option>
-    <option value="">Username</option>
-    <option value="">ItemID</option>
-</select>
-
-<input type="text" />

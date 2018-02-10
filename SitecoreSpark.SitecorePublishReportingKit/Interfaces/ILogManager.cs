@@ -1,6 +1,6 @@
 ﻿namespace SitecoreSpark.SPRK.Interfaces
 {
-    public interface ILogManager
+    public interface ILogManager<T>
     {
         /// <summary>
         /// Should init any internal variables for the implementation and populate them.
@@ -14,5 +14,11 @@
         /// </summary>
         /// <returns>Array of file names.</returns>
         string[] GetLogFilenames();
+
+        /// <summary>
+        /// Should get a list of log item objects.
+        /// </summary>
+        /// <returns>Array of log item objects.</returns>
+        T[] GetLogItems();
     }
 }

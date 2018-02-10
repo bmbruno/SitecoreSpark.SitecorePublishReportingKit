@@ -3,6 +3,7 @@ using Sitecore.DependencyInjection;
 using SitecoreSpark.SPRK.Controllers;
 using SitecoreSpark.SPRK.Implementation;
 using SitecoreSpark.SPRK.Interfaces;
+using SitecoreSpark.SPRK.Models;
 
 namespace SitecoreSpark.SPRK
 {
@@ -15,7 +16,7 @@ namespace SitecoreSpark.SPRK
 
             // Services / Managers
             serviceCollection.AddSingleton<ISparkLogger, SparkLogger>();
-            serviceCollection.AddScoped<ILogManager, LogManager>();
+            serviceCollection.AddScoped<ILogManager<LogItem>, LogManager>();
         }
     }
 }

@@ -112,6 +112,7 @@
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Implementation\LogManager.cs" />
     <Compile Include="Interfaces\ILogManager.cs" />
+    <Compile Include="Models\LogItem.cs" />
     <Compile Include="Publishing\Pipelines\Publish\PublishLoggerStartProcessor.cs" />
     <Compile Include="RegisterCustomRoutes.cs" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -140,7 +141,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="ViewModels\" />
   </ItemGroup>
   <PropertyGroup>
