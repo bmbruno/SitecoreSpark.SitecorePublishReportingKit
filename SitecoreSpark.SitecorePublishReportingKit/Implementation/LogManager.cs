@@ -52,7 +52,7 @@ namespace SitecoreSpark.SPRK.Implementation
         /// <returns>Array of LogItem objects.</returns>
         public LogItem[] GetLogItems()
         {
-            return new LogItem[1];
+            return this._logList.ToArray();
         }
 
         /// <summary>
