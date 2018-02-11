@@ -60,6 +60,16 @@ namespace SitecoreSpark.SPRK.Implementation
             return this._logList.ToArray();
         }
 
+        public string[] GetLogContents(string logFileName)
+        {
+            LogItem currentLogItem = this._logList.FirstOrDefault(u => u.FileName == logFileName);
+
+            if (currentLogItem == null)
+                throw new Exception($"No log item found for filename: {logFileName}");
+
+            return File.ReadAllLines(currentLogItem.FilePath);
+        }
+
         /// <summary>
         /// Gets the date value from the log filename.
         /// </summary>

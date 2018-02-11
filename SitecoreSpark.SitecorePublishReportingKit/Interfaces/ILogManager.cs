@@ -20,5 +20,11 @@
         /// </summary>
         /// <returns>Array of log item objects.</returns>
         T[] GetLogItems();
+
+        /// <summary>
+        /// Should return an array of file contents of a log file.
+        /// </summary>
+        /// <returns>Array of file contents by line.</returns>
+        string[] GetLogContents(string logFileName);
     }
 }
