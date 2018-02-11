@@ -13,12 +13,12 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var filename in ViewBag.Filenames)
+        @foreach (var log in ViewBag.LogItems)
         {
             <tr>
-                <td>@filename</td>
+                <td>@log.Date.ToString("yyyy-MM-dd")</td>
                 <td>
-                    <a href="javascript://">View</a>
+                    <a href="javascript://">View Log</a>
                     <a href="javascript://">Raw</a>
                 </td>
             </tr>

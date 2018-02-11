@@ -34,9 +34,9 @@ namespace SitecoreSpark.SPRK.Controllers
         public ActionResult Index()
         {
             // Load list of log files
-            string[] filenames = _logManager.GetLogFilenames();
+            LogItem[] logItems = _logManager.GetLogItems();
 
-            ViewBag.Filenames = filenames;
+            ViewBag.LogItems = logItems;
 
             return View("~/Views/SPRK/Report/Index.cshtml");
         }
