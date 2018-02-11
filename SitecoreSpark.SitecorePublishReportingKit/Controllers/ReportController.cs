@@ -3,6 +3,7 @@ using SitecoreSpark.SPRK.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Web;
 using System.Web.Mvc;
 
@@ -41,11 +42,11 @@ namespace SitecoreSpark.SPRK.Controllers
             return View("~/Views/SPRK/Report/Index.cshtml");
         }
 
-        public ActionResult ViewLog(string log)
+        public ActionResult ViewRaw(string log)
         {
-            var contents = _logManager.GetLogContents(log);
-
-            return View("~/Views/SPRK/Report/ViewLog.cshtml");
+            string contents = _logManager.GetLogContentsRaw(log);
+            
+            return Content(contents, "text/plain");
         }
     }
 }

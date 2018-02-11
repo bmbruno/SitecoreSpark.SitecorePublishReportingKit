@@ -60,6 +60,11 @@ namespace SitecoreSpark.SPRK.Implementation
             return this._logList.ToArray();
         }
 
+        /// <summary>
+        /// Returns the contents of a log file by line.
+        /// </summary>
+        /// <param name="logFileName">Filename of the log.</param>
+        /// <returns>File contents in an array of strings.</returns>
         public string[] GetLogContents(string logFileName)
         {
             LogItem currentLogItem = this._logList.FirstOrDefault(u => u.FileName == logFileName);
@@ -68,6 +73,21 @@ namespace SitecoreSpark.SPRK.Implementation
                 throw new Exception($"No log item found for filename: {logFileName}");
 
             return File.ReadAllLines(currentLogItem.FilePath);
+        }
+
+        /// <summary>
+        /// Returns the contents of a log file in whole.
+        /// </summary>
+        /// <param name="logFileName">Filename of the log.</param>
+        /// <returns>File contents of a log in a string.</returns>
+        public string GetLogContentsRaw(string logFileName)
+        {
+            LogItem currentLogItem = this._logList.FirstOrDefault(u => u.FileName == logFileName);
+
+            if (currentLogItem == null)
+                throw new Exception($"No log item found for filename: {logFileName}");
+
+            return File.ReadAllText(currentLogItem.FilePath);
         }
 
         /// <summary>

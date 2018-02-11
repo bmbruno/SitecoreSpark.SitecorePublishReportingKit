@@ -22,9 +22,16 @@
         T[] GetLogItems();
 
         /// <summary>
-        /// Should return an array of file contents of a log file.
+        /// Should return an array of the contents of a log file.
         /// </summary>
         /// <returns>Array of file contents by line.</returns>
         string[] GetLogContents(string logFileName);
+
+        /// <summary>
+        /// SHould return a string of the contents of a log file.
+        /// </summary>
+        /// <param name="logFileName"></param>
+        /// <returns>String of file contents.</returns>
+        string GetLogContentsRaw(string logFileName);
     }
 }
