@@ -12,5 +12,7 @@ namespace SitecoreSpark.SPRK.Models
         public string FileName { get; set; }
 
         public string FilePath { get; set; }
+
+        public int? FileSizeKB { get; set; }
     }
 }

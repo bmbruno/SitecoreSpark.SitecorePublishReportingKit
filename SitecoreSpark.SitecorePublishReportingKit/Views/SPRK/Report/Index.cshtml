@@ -1,14 +1,13 @@
 ﻿@{
     Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Publishing Logs";
 }
-<h2>Select a Log</h2>
-
 
 <table>
     <thead>
         <tr>
             <th>Log Date</th>
+            <th>Size</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -17,12 +16,12 @@
         {
             <tr>
                 <td>@log.Date.ToString("yyyy-MM-dd")</td>
+                <td>@log.FileSizeKB KB</td>
                 <td>
-                    <a href="javascript://">View Log</a>
-                    <a href="javascript://">Raw</a>
+                    <a href="/sitecore/sprk/view?log=@log.FileName" class="btn">View Log</a>
+                    <a href="/sitecore/sprk/raw?log=@log.FileName" class="btn">Raw</a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
-

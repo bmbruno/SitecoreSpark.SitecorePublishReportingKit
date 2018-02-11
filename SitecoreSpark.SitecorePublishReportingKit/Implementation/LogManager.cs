@@ -28,13 +28,18 @@ namespace SitecoreSpark.SPRK.Implementation
 
             for (int i = 0; i < allFiles.Length; i++)
             {
+                FileInfo info = new FileInfo(allFiles[i]);
+
                 _logList.Add(new LogItem()
                 {
                     Date = GetDateFromFileName(Path.GetFileNameWithoutExtension(allFiles[i])),
                     FileName = Path.GetFileNameWithoutExtension(allFiles[i]),
-                    FilePath = allFiles[i]
+                    FilePath = allFiles[i],
+                    FileSizeKB = Convert.ToInt32(info.Length / 1000)
                 });
             }
+
+            _logList = _logList.OrderByDescending(u => u.Date).ToList();
         }
 
         /// <summary>
