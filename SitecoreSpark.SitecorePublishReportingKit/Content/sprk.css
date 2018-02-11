@@ -19,6 +19,11 @@ a.btn { color: #FFF; transition: none; }
 .btn.default { background-color: #7e7e7e; color: #FFF; box-shadow: 0 3px 0 #414141; }
 .btn.default:active { box-shadow: none; }
 
+.message { padding: 1em; margin: 1em 0; font-weight: bold; color: #FFF; text-shadow: 2px 2px 0 #000; border-radius: 4px; }
+.message.success { background-color: #328028; }
+.message.warning { background-color: #b45e02; }
+.message.error { background-color: #871313; }
+
 @media (min-width: 40em)
 {
     .container { max-width: 75%; }

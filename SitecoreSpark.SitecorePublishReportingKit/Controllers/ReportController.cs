@@ -1,10 +1,6 @@
 ﻿using SitecoreSpark.SPRK.Interfaces;
 using SitecoreSpark.SPRK.Models;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
 using System.Web.Mvc;
 
 namespace SitecoreSpark.SPRK.Controllers
@@ -37,6 +33,8 @@ namespace SitecoreSpark.SPRK.Controllers
             // Load list of log files
             LogItem[] logItems = _logManager.GetLogItems();
 
+            // TODO: handle "null" result from GetLogItems
+            // TODO: implement model
             ViewBag.LogItems = logItems;
 
             return View("~/Views/SPRK/Report/Index.cshtml");
@@ -45,7 +43,13 @@ namespace SitecoreSpark.SPRK.Controllers
         public ActionResult ViewRaw(string log)
         {
             string contents = _logManager.GetLogContentsRaw(log);
-            
+
+            if (String.IsNullOrEmpty(contents))
+            {
+                TempData["Error"] = $"Log file is not a valid SPRK log file: {log}";
+                return RedirectToAction(actionName: "Index", controllerName: "Report");
+            }
+
             return Content(contents, "text/plain");
         }
     }

@@ -12,6 +12,7 @@ namespace SitecoreSpark.SPRK.Implementation
     {
         private List<LogItem> _logList;
         private string _logDateFormat = "yyyyMMdd";
+        private string _logPrefix;
         
         /// <summary>
         /// Initalizes local variables and runs other setup tasks.
@@ -22,6 +23,7 @@ namespace SitecoreSpark.SPRK.Implementation
         {
             // Variable init
             _logList = new List<LogItem>();
+            _logPrefix = logNamePrefix;
 
             // Load all files matching filename prefix pattern
             var allFiles = Directory.GetFiles(logFolderPath, $"{logNamePrefix}*");
@@ -67,12 +69,18 @@ namespace SitecoreSpark.SPRK.Implementation
         /// <returns>File contents in an array of strings.</returns>
         public string[] GetLogContents(string logFileName)
         {
+            // Validate
+            if (!this.IsValidLogFile(logFileName))
+                return null;
+            
+            // Process
             LogItem currentLogItem = this._logList.FirstOrDefault(u => u.FileName == logFileName);
 
             if (currentLogItem == null)
                 throw new Exception($"No log item found for filename: {logFileName}");
 
             return File.ReadAllLines(currentLogItem.FilePath);
+            
         }
 
         /// <summary>
@@ -82,6 +90,11 @@ namespace SitecoreSpark.SPRK.Implementation
         /// <returns>File contents of a log in a string.</returns>
         public string GetLogContentsRaw(string logFileName)
         {
+            // Validate
+            if (!this.IsValidLogFile(logFileName))
+                return null;
+
+            // Process
             LogItem currentLogItem = this._logList.FirstOrDefault(u => u.FileName == logFileName);
 
             if (currentLogItem == null)
@@ -102,6 +115,11 @@ namespace SitecoreSpark.SPRK.Implementation
             DateTime date = DateTime.ParseExact(fileName.Substring(startIndex, 8), this._logDateFormat, System.Globalization.CultureInfo.InvariantCulture);
 
             return date;
+        }
+
+        private bool IsValidLogFile(string logFileName)
+        {
+            return (logFileName.StartsWith(this._logPrefix));
         }
     }
 }

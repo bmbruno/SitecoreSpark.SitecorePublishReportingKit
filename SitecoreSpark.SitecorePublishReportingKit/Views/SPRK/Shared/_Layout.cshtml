@@ -18,6 +18,13 @@
             <h1>@ViewBag.Title</h1>
         </div>
 
+        @if (TempData["Error"] != null)
+        {
+            <div class="container">
+                <div class="message error">@TempData["Error"]</div>
+            </div>
+        }
+
         <div class="container content">
             @RenderBody()
         </div>
