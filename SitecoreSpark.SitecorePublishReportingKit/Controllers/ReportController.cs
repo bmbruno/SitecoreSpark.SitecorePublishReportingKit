@@ -41,8 +41,10 @@ namespace SitecoreSpark.SPRK.Controllers
             return View("~/Views/SPRK/Report/Index.cshtml");
         }
 
-        public ActionResult ViewLog(string logDate)
+        public ActionResult ViewLog(string log)
         {
+            var contents = _logManager.GetLogContents(log);
+
             return View("~/Views/SPRK/Report/ViewLog.cshtml");
         }
     }
