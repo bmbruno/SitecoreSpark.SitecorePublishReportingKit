@@ -1,9 +1,11 @@
 ﻿using SitecoreSpark.SPRK.Interfaces;
 using SitecoreSpark.SPRK.Models;
 using SitecoreSpark.SPRK.ViewModels;
+using SitecoreSpark.SPRK.Mapping;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
+
 
 namespace SitecoreSpark.SPRK.Controllers
 {
@@ -37,16 +39,7 @@ namespace SitecoreSpark.SPRK.Controllers
 
             // TODO: handle "null" result from GetLogItems
 
-            // TODO: move mapping code to service/support/mapper class
-            for (var i = 0; i < logItems.Length; i++)
-            {
-                viewModel.LogItems.Add(new LogItemViewModel()
-                {
-                    Date = logItems[i].Date.ToString("yyyy-MM-dd"),
-                    FileSizeKB = (logItems[i].FileSizeKB.HasValue) ? logItems[i].FileSizeKB.Value.ToString() : "0",
-                    FileName = logItems[i].FileName
-                });
-            }
+            viewModel.MapToViewModel(logItems);
             
             return View("~/Views/SPRK/Report/Index.cshtml", viewModel);
         }
@@ -56,24 +49,7 @@ namespace SitecoreSpark.SPRK.Controllers
             LogDetailViewModel viewModel = new LogDetailViewModel();
             string[] contents = _logManager.GetLogContents(log);
 
-            // TODO: move mapping code to service/support/mapper class
-            foreach (string line in contents)
-            {
-                // TODO: handle escaped pipe characters
-                string[] data = line.Split('|');
-
-                viewModel.Rows.Add(new LogRowViewModel()
-                {
-                    // TODO: handle null cases when reading from array
-                    ItemID = data[0],
-                    Mode = data[1],
-                    Result = data[2],
-                    Username = data[3],
-                    SourceDB = data[4],
-                    TargetDB = data[5],
-                    DateTime = data[6]
-                });
-            }
+            viewModel.MapToViewModel(contents);
 
             return View("~/Views/SPRK/Report/ViewLog.cshtml", viewModel);
         }
