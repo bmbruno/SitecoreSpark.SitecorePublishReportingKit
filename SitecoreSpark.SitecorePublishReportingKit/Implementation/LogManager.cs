@@ -119,6 +119,9 @@ namespace SitecoreSpark.SPRK.Implementation
 
         private bool IsValidLogFile(string logFileName)
         {
+            if (String.IsNullOrEmpty(logFileName))
+                return false;
+
             return (logFileName.StartsWith(this._logPrefix));
         }
     }

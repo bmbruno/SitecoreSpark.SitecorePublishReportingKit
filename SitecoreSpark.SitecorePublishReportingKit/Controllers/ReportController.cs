@@ -47,7 +47,7 @@ namespace SitecoreSpark.SPRK.Controllers
             if (String.IsNullOrEmpty(contents))
             {
                 TempData["Error"] = $"Log file is not a valid SPRK log file: {log}";
-                return RedirectToAction(actionName: "Index", controllerName: "Report");
+                return Redirect("/sitecore/sprk");
             }
 
             return Content(contents, "text/plain");
