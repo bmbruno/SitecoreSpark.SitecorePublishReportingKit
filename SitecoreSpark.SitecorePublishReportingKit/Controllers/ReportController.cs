@@ -39,6 +39,7 @@ namespace SitecoreSpark.SPRK.Controllers
             LogDetailViewModel viewModel = new LogDetailViewModel();
             string[] contents = _logManager.GetLogContents(log);
 
+            viewModel.Title = log;
             viewModel.MapToViewModel(contents);
 
             return View("~/Views/SPRK/Report/ViewLog.cshtml", viewModel);

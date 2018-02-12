@@ -1,7 +1,7 @@
 ﻿@model SitecoreSpark.SPRK.ViewModels.LogDetailViewModel
 @{
     Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
-    ViewBag.Title = "View Log" + "DATE";
+    ViewBag.Title = "View Log: " + Model.Title;
 }
 
 @if (Model.Rows.Count > 0)

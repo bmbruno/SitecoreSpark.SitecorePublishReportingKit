@@ -7,6 +7,8 @@ namespace SitecoreSpark.SPRK.ViewModels
 {
     public class LogDetailViewModel
     {
+        public string Title { get; set; }
+
         public List<LogRowViewModel> Rows { get; set; }
 
         public LogDetailViewModel()
