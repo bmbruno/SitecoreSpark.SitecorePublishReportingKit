@@ -36,21 +36,43 @@ namespace SitecoreSpark.SPRK.Mapping
         {
             foreach (string line in fileContentByLine)
             {
-                // TODO: handle escaped pipe characters
-                string[] data = line.Split('|');
+                string localLine = line;
+
+                // Handle escaped pipe characters
+                if (localLine.IndexOf(@"\|") > 0)
+                    localLine = localLine.Replace(@"\|", "##PIPE##");
+                   
+                string[] data = localLine.Split('|');
 
                 vm.Rows.Add(new LogRowViewModel()
                 {
-                    // TODO: handle null cases when reading from array
-                    ItemID = data[0],
-                    Mode = data[1],
-                    Result = data[2],
-                    UserName = data[3],
-                    SourceDB = data[4],
-                    TargetDB = data[5],
-                    DateTime = data[6]
+                    ItemID = SanitizeForModel(data[0]),
+                    Mode = SanitizeForModel(data[1]),
+                    Result = SanitizeForModel(data[2]),
+                    UserName = SanitizeForModel(data[3]),
+                    SourceDB = SanitizeForModel(data[4]),
+                    TargetDB = SanitizeForModel(data[5]),
+                    DateTime = SanitizeForModel(data[6])
                 });
             }
+        }
+
+        /// <summary>
+        /// Cleans up text from file and ensures it is a valid string for a view model. Includes logic to convert ##PIPE## tokens back to pipe character.
+        /// </summary>
+        /// <param name="input">Input text to sanitize.</param>
+        /// <returns>Sanitized string.</returns>
+        private static string SanitizeForModel(string input)
+        {
+            // Handle empty/null string
+            if (String.IsNullOrEmpty(input))
+                return string.Empty;
+
+            // Handle escaped characters
+            if (input.IndexOf("##PIPE##") > 0)
+                return input.Replace("##PIPE##", "|");
+
+            return input;
         }
     }
 }
