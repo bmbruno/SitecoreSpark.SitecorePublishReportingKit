@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Mapping\ViewModelMappingExtensions.cs" />
     <Compile Include="ViewModels\LogRowViewModel.cs" />
     <Compile Include="ViewModels\LogDetailViewModel.cs" />

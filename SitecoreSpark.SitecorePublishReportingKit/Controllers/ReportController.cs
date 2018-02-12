@@ -3,14 +3,13 @@ using SitecoreSpark.SPRK.Models;
 using SitecoreSpark.SPRK.ViewModels;
 using SitecoreSpark.SPRK.Mapping;
 using System;
-using System.Collections.Generic;
 using System.Web.Mvc;
 
 
 namespace SitecoreSpark.SPRK.Controllers
 {
     [Authorize]
-    public class ReportController : Controller
+    public class ReportController : BaseController
     {
         private readonly ILogManager<LogItem> _logManager;
 
@@ -21,15 +20,6 @@ namespace SitecoreSpark.SPRK.Controllers
             string folderPath = Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.LogFolder");
             string filePrefix = Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.LogPrefix");
             _logManager.Initialize(folderPath, filePrefix);
-        }
-
-        /// <summary>
-        /// Determines if the current user is an admin. Checks against current Sitecore context.
-        /// </summary>
-        /// <returns>True or false.</returns>
-        private bool UserIsAdmin()
-        {
-            return Sitecore.Context.User.IsAdministrator;
         }
 
         public ActionResult Index()
