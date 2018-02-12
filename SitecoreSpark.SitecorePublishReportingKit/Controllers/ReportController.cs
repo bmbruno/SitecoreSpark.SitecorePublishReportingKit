@@ -1,6 +1,7 @@
 ﻿using SitecoreSpark.SPRK.Interfaces;
 using SitecoreSpark.SPRK.Models;
 using System;
+using System.Collections.Generic;
 using System.Web.Mvc;
 
 namespace SitecoreSpark.SPRK.Controllers
@@ -38,6 +39,19 @@ namespace SitecoreSpark.SPRK.Controllers
             ViewBag.LogItems = logItems;
 
             return View("~/Views/SPRK/Report/Index.cshtml");
+        }
+
+        public ActionResult ViewLog(string log)
+        {
+            string[] contents = _logManager.GetLogContents(log);
+            List<string[]> formatted = new List<string[]>();
+
+            foreach (string line in contents)
+            {
+                formatted.Add(line.Split('|'));
+            }
+
+            return View("~/Views/SPRK/Report/ViewLog.cshtml", formatted);
         }
 
         public ActionResult ViewRaw(string log)

@@ -6,7 +6,7 @@ h1 { font-weight: bold; }
 .content { padding: 0.5em; background-color: #FFF; }
 
 table { width: 100%; }
-table td, table th { text-align: center; padding: 0.5em 0; }
+table td, table th { text-align: center; padding: 0.5em 0.25em; }
 table th { background-color: #606060; color: #FFF; text-shadow: 1px 1px 0 #000; }
 table tbody tr:nth-child(odd) { background-color: #d5d5d5; }
 table tbody tr:nth-child(even) { background-color: #e8e8e8; }
@@ -23,6 +23,8 @@ a.btn { color: #FFF; transition: none; }
 .message.success { background-color: #328028; }
 .message.warning { background-color: #b45e02; }
 .message.error { background-color: #871313; }
+
+.mono { font-family: monospace; }
 
 @media (min-width: 40em)
 {
