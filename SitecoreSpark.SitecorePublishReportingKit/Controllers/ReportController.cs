@@ -53,15 +53,29 @@ namespace SitecoreSpark.SPRK.Controllers
 
         public ActionResult ViewLog(string log)
         {
+            LogDetailViewModel viewModel = new LogDetailViewModel();
             string[] contents = _logManager.GetLogContents(log);
-            List<string[]> formatted = new List<string[]>();
 
+            // TODO: move mapping code to service/support/mapper class
             foreach (string line in contents)
             {
-                formatted.Add(line.Split('|'));
+                // TODO: handle escaped pipe characters
+                string[] data = line.Split('|');
+
+                viewModel.Rows.Add(new LogRowViewModel()
+                {
+                    // TODO: handle null cases when reading from array
+                    ItemID = data[0],
+                    Mode = data[1],
+                    Result = data[2],
+                    Username = data[3],
+                    SourceDB = data[4],
+                    TargetDB = data[5],
+                    DateTime = data[6]
+                });
             }
 
-            return View("~/Views/SPRK/Report/ViewLog.cshtml", formatted);
+            return View("~/Views/SPRK/Report/ViewLog.cshtml", viewModel);
         }
 
         public ActionResult ViewRaw(string log)

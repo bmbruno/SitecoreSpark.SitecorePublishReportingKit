@@ -1,10 +1,10 @@
-﻿@model List<string[]>
+﻿@model SitecoreSpark.SPRK.ViewModels.LogDetailViewModel
 @{
     Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
     ViewBag.Title = "View Log" + "DATE";
 }
 
-@if (Model.Count > 0)
+@if (Model.Rows.Count > 0)
 {
     <table>
         <thead>
@@ -20,16 +20,16 @@
         </thead>
         <tbody>
 
-            @foreach (string[] row in Model)
+            @foreach (SitecoreSpark.SPRK.ViewModels.LogRowViewModel row in Model.Rows)
             {
                 <tr>
-                    <td class="mono">@row[0]</td>
-                    <td>@row[1]</td>
-                    <td>@row[2]</td>
-                    <td>@row[3]</td>
-                    <td>@row[4]</td>
-                    <td>@row[5]</td>
-                    <td>@row[6]</td>
+                    <td class="mono">@row.ItemID</td>
+                    <td>@row.Mode</td>
+                    <td>@row.Result</td>
+                    <td>@row.UserName</td>
+                    <td>@row.SourceDB</td>
+                    <td>@row.TargetDB</td>
+                    <td>@row.DateTime</td>
                 </tr>
             }
 

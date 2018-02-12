@@ -13,7 +13,7 @@ namespace SitecoreSpark.SPRK.ViewModels
 
         public string Result { get; set; }
 
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         public string SourceDB { get; set; }
 
