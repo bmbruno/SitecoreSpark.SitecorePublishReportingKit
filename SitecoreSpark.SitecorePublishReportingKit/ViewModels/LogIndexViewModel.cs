@@ -7,7 +7,7 @@ namespace SitecoreSpark.SPRK.ViewModels
 {
     public class LogIndexViewModel
     {
-        List<LogItemViewModel> LogItems { get; set; }
+        public List<LogItemViewModel> LogItems { get; set; }
 
         public LogIndexViewModel()
         {

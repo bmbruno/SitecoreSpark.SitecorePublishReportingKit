@@ -9,7 +9,7 @@ namespace SitecoreSpark.SPRK.ViewModels
     {
         public string Date { get; set; }
 
-        public string SizeKB { get; set; }
+        public string FileSizeKB { get; set; }
 
         public string FileName { get; set; }
     }

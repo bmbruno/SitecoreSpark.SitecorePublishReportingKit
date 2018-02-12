@@ -1,4 +1,5 @@
-﻿@{
+﻿@model SitecoreSpark.SPRK.ViewModels.LogIndexViewModel
+@{
     Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
     ViewBag.Title = "Publishing Logs";
 }
@@ -12,10 +13,10 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var log in ViewBag.LogItems)
+        @foreach (var log in Model.LogItems)
         {
             <tr>
-                <td>@log.Date.ToString("yyyy-MM-dd")</td>
+                <td>@log.Date</td>
                 <td>@log.FileSizeKB KB</td>
                 <td>
                     <a href="/sitecore/sprk/report/viewlog?log=@log.FileName" class="btn">View Log</a>

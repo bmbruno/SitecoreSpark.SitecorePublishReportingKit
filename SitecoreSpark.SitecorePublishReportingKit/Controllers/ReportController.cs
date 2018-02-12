@@ -1,5 +1,6 @@
 ﻿using SitecoreSpark.SPRK.Interfaces;
 using SitecoreSpark.SPRK.Models;
+using SitecoreSpark.SPRK.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -31,14 +32,23 @@ namespace SitecoreSpark.SPRK.Controllers
 
         public ActionResult Index()
         {
-            // Load list of log files
+            LogIndexViewModel viewModel = new LogIndexViewModel();
             LogItem[] logItems = _logManager.GetLogItems();
 
             // TODO: handle "null" result from GetLogItems
-            // TODO: implement model
-            ViewBag.LogItems = logItems;
 
-            return View("~/Views/SPRK/Report/Index.cshtml");
+            // TODO: move mapping code to service/support/mapper class
+            for (var i = 0; i < logItems.Length; i++)
+            {
+                viewModel.LogItems.Add(new LogItemViewModel()
+                {
+                    Date = logItems[i].Date.ToString("yyyy-MM-dd"),
+                    FileSizeKB = (logItems[i].FileSizeKB.HasValue) ? logItems[i].FileSizeKB.Value.ToString() : "0",
+                    FileName = logItems[i].FileName
+                });
+            }
+            
+            return View("~/Views/SPRK/Report/Index.cshtml", viewModel);
         }
 
         public ActionResult ViewLog(string log)
