@@ -1,0 +1,17 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace SitecoreSpark.SPRK.ViewModels
+{
+    public class LogDetailViewModel
+    {
+        public List<LogRowViewModel> Rows { get; set; }
+
+        public LogDetailViewModel()
+        {
+            Rows = new List<LogRowViewModel>();
+        }
+    }
+}

@@ -101,6 +101,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\LogRowViewModel.cs" />
+    <Compile Include="ViewModels\LogDetailViewModel.cs" />
     <Compile Include="ViewModels\LogItemViewModel.cs" />
     <Compile Include="ViewModels\LogIndexViewModel.cs" />
     <Content Include="App_Config\Include\SitecoreSpark\SPRK\SitecoreSpark.SPRK.config">
