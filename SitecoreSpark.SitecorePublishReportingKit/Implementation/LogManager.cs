@@ -88,17 +88,17 @@ namespace SitecoreSpark.SPRK.Implementation
         /// Returns the contents of a log file by line, affected by given parameters.
         /// </summary>
         /// <param name="logFileName">Filename of the log.</param>
-        /// <param name="updated">Display only items with a Created, Modified, or Deleted operation.</param>
+        /// <param name="modified">Display only items with a Created, Updated, or Deleted operation.</param>
         /// <returns>File contents in an array of strings.</returns>
-        public string[] GetLogContents(string logFileName, bool updated)
+        public string[] GetLogContents(string logFileName, bool modified)
         {
             string[] contents = this.GetLogContents(logFileName);
 
             if (contents == null)
                 return null;
 
-            // Updated flag - remove lines with an operation result of "None" or "Skipped"
-            if (updated)
+            // Modified flag - only keep items/lines that were created, updated, or deleted
+            if (modified)
                 return contents.Where(u => !u.Contains("|None|") && !u.Contains("|Skipped|")).ToArray();
             else
                 return contents;
@@ -128,10 +128,11 @@ namespace SitecoreSpark.SPRK.Implementation
         /// Gets a log file for the given filename and formats it as a CSV string.
         /// </summary>
         /// <param name="logFileName">Filename of the log.</param>
+        /// <param name="updated">Display only items with a Created, Updated, or Deleted operation.</param>
         /// <returns>CSV-formatted string.</returns>
-        public string GetFileForCSV(string logFileName)
+        public string GetFileForCSV(string logFileName, bool modified)
         {
-            string[] contents = this.GetLogContents(logFileName);
+            string[] contents = this.GetLogContents(logFileName, modified);
             StringBuilder sb = new StringBuilder();
 
             // File header
@@ -141,8 +142,8 @@ namespace SitecoreSpark.SPRK.Implementation
             foreach (string row in contents)
             {
                 string line = row;
-                line = line.Replace(@"\|", "##PIPE##");
                 line = line.Replace("\"", string.Empty);
+                line = line.Replace(@"\|", "##PIPE##");
                 line = line.Replace('|', ',');
                 line = line.Replace("##PIPE##", "|");
 

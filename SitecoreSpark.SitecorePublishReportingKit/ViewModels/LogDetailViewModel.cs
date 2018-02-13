@@ -11,7 +11,7 @@ namespace SitecoreSpark.SPRK.ViewModels
 
         public string FileName { get; set; }
 
-        public bool UpdatedOnly { get; set; }
+        public bool ModifiedOnly { get; set; }
 
         public List<LogRowViewModel> Rows { get; set; }
 

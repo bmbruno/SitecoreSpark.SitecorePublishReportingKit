@@ -13,8 +13,7 @@ table th { background-color: #606060; color: #FFF; text-shadow: 1px 1px 0 #000; 
 table tbody tr:nth-child(odd) { background-color: #d5d5d5; }
 table tbody tr:nth-child(even) { background-color: #e8e8e8; }
 
-.btn { padding: 0.25em 0.5em; font-size: 0.85em; font-weight: bold; display: inline-block; border: none; border-radius: 4px; background-color: #dc291e; color: #FFF; text-shadow: 1px 1px 0 #000; cursor: pointer; box-shadow: 0 1px 0 #960101; font-weight: bold; }
-.btn { color: #FFF; transition: none; }
+.btn { padding: 0.25em 0.5em; font-size: 0.85em; font-weight: bold; display: inline-block; border: none; border-radius: 4px; background-color: #dc291e; color: #FFF; text-shadow: 1px 1px 0 #000; cursor: pointer; box-shadow: 0 1px 0 #960101; font-weight: bold; color: #FFF; transition: none; }
 .btn:active { position: relative; bottom: -1px; box-shadow: none; }
 .btn.primary, input[type="submit"].primary { padding: 1em 2em; font-size: 1.1em; text-transform: uppercase; }
 .btn.primary:hover { background: none; background-color: #a51911; }
@@ -33,6 +32,6 @@ table tbody tr:nth-child(even) { background-color: #e8e8e8; }
     .container { max-width: 75%; }
     .content { padding: 1em; border-radius: 8px; }
 
-    .btn { font-size: 1em; font-weight: normal; box-shadow: 0 3px 0 #960101; }
+    .btn { font-size: 1em; box-shadow: 0 3px 0 #960101; }
     .btn:active { bottom: -3px; }
 }

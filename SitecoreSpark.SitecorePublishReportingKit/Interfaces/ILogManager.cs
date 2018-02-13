@@ -32,9 +32,9 @@
         /// Should return an array of the contents of a log file, affected by given filter parameters.
         /// </summary>
         /// <param name="logFileName">Filename of the log.</param>
-        /// <param name="updatedOnly">Determines if only updated items are returned.</param>
+        /// <param name="modified">Determines if only modified items are returned.</param>
         /// <returns>Array of file contents by line.</returns>
-        string[] GetLogContents(string logFileName, bool updatedOnly);
+        string[] GetLogContents(string logFileName, bool modified);
 
         /// <summary>
         /// Should return a string of the contents of a log file.
@@ -47,7 +47,8 @@
         /// Should return a log file formatted for CSV output.
         /// </summary>
         /// <param name="logFileName">Filename of the log.</param>
+        /// <param name="modified">Determines if only modified items are returned.</param>
         /// <returns>CSV-formatted string of log contents.</returns>
-        string GetFileForCSV(string logFileName);
+        string GetFileForCSV(string logFileName, bool modified);
     }
 }

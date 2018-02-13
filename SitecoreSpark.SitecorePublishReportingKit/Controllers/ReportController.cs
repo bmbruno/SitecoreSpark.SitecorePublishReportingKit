@@ -34,14 +34,14 @@ namespace SitecoreSpark.SPRK.Controllers
             return View("~/Views/SPRK/Report/Index.cshtml", viewModel);
         }
 
-        public ActionResult ViewLog(string log, bool updated = false)
+        public ActionResult ViewLog(string log, bool modified = false)
         {
             LogDetailViewModel viewModel = new LogDetailViewModel();
-            string[] contents = _logManager.GetLogContents(log, updated);
+            string[] contents = _logManager.GetLogContents(log, modified);
 
             viewModel.Title = log;
             viewModel.FileName = log;
-            viewModel.UpdatedOnly = updated;
+            viewModel.ModifiedOnly = modified;
             viewModel.MapToViewModel(contents);
 
             return View("~/Views/SPRK/Report/ViewLog.cshtml", viewModel);
@@ -60,9 +60,9 @@ namespace SitecoreSpark.SPRK.Controllers
             return Content(contents, "text/plain");
         }
 
-        public FileResult Download(string log)
+        public FileResult Download(string log, bool modified = false)
         {
-            string csv = _logManager.GetFileForCSV(log);
+            string csv = _logManager.GetFileForCSV(log, modified);
             return File(fileContents: new UTF8Encoding().GetBytes(csv), contentType: "text/csv", fileDownloadName: $"{log}.csv");
         }
     }
