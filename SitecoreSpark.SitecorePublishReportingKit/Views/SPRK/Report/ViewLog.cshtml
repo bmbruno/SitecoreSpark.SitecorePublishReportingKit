@@ -9,12 +9,12 @@
     @if (Model.ModifiedOnly)
     {
         <a href="/sitecore/sprk/report/viewlog?log=@Model.FileName" class="btn">Full Log</a>
-        <a href="/sitecore/sprk/report/download?log=@Model.FileName" class="btn">Download (CSV)</a>
+        <a href="/sitecore/sprk/report/download?log=@Model.FileName&modified=true" class="btn">Download (CSV)</a>
     }
     else
     {
         <a href="/sitecore/sprk/report/viewlog?log=@Model.FileName&modified=true" class="btn">Updated Only</a>
-        <a href="/sitecore/sprk/report/download?log=@Model.FileName&modified=true" class="btn">Download (CSV)</a>
+        <a href="/sitecore/sprk/report/download?log=@Model.FileName" class="btn">Download (CSV)</a>
     }
     
 </div>
