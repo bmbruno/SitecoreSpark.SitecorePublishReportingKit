@@ -122,6 +122,7 @@
     <Compile Include="Publishing\Pipelines\Publish\PublishLoggerStartProcessor.cs" />
     <Compile Include="RegisterCustomRoutes.cs" />
     <Content Include="Content\sprk.css" />
+    <Content Include="Scripts\sprk.tablesort.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\SPRK\Report\Find.cshtml" />
     <Content Include="Views\SPRK\Report\Index.cshtml" />

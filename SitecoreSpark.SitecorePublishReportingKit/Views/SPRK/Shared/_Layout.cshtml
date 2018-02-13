@@ -28,5 +28,10 @@
         <div class="container content">
             @RenderBody()
         </div>
+
+        <script src="~/Scripts/sprk.tablesort.min.js"></script>
+        <script>
+            new Tablesort(document.getElementById('LogDataTable'));
+        </script>
     </body>
 </html>
