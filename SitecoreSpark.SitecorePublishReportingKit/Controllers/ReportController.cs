@@ -4,7 +4,7 @@ using SitecoreSpark.SPRK.ViewModels;
 using SitecoreSpark.SPRK.Mapping;
 using System;
 using System.Web.Mvc;
-
+using System.Text;
 
 namespace SitecoreSpark.SPRK.Controllers
 {
@@ -56,6 +56,12 @@ namespace SitecoreSpark.SPRK.Controllers
             }
 
             return Content(contents, "text/plain");
+        }
+
+        public FileResult Download(string log)
+        {
+            string csv = _logManager.GetFileForCSV(log);
+            return File(fileContents: new UTF8Encoding().GetBytes(csv), contentType: "text/csv", fileDownloadName: $"{log}.csv");
         }
     }
 }

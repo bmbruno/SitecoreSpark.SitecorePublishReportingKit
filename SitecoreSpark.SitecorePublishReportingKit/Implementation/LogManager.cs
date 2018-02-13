@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.IO;
 using SitecoreSpark.SPRK.Interfaces;
 using SitecoreSpark.SPRK.Models;
+using System.Text;
 
 namespace SitecoreSpark.SPRK.Implementation
 {
@@ -13,6 +13,7 @@ namespace SitecoreSpark.SPRK.Implementation
         private List<LogItem> _logList;
         private string _logDateFormat = "yyyyMMdd";
         private string _logPrefix;
+        private string _csvHeader = "ItemID,Mode,Result,User,SourceDB,TargetDB,DateTime";
         
         /// <summary>
         /// Initalizes local variables and runs other setup tasks.
@@ -104,6 +105,34 @@ namespace SitecoreSpark.SPRK.Implementation
         }
 
         /// <summary>
+        /// Gets a log file for the given filename and formats it as a CSV string.
+        /// </summary>
+        /// <param name="logFileName">Filename of the log.</param>
+        /// <returns>CSV-formatted string.</returns>
+        public string GetFileForCSV(string logFileName)
+        {
+            string[] contents = this.GetLogContents(logFileName);
+            StringBuilder sb = new StringBuilder();
+
+            // File header
+            sb.Append($"{this._csvHeader}\n");
+
+            // TODO: check if pipe replacement is necessary on each line before calling replace()
+            foreach (string row in contents)
+            {
+                string line = row;
+                line = line.Replace(@"\|", "##PIPE##");
+                line = line.Replace("\"", string.Empty);
+                line = line.Replace('|', ',');
+                line = line.Replace("##PIPE##", "|");
+
+                sb.Append($"{line}\n");
+            }
+
+            return sb.ToString();
+        }
+
+        /// <summary>
         /// Gets the date value from the log filename.
         /// </summary>
         /// <param name="fileName">Filename of the log file containing a date to parse.</param>
@@ -117,6 +146,11 @@ namespace SitecoreSpark.SPRK.Implementation
             return date;
         }
 
+        /// <summary>
+        /// Verifies that the provided log filename is a valid SPRK log file name, based on the log prefix value assigned during class instantiation.
+        /// </summary>
+        /// <param name="logFileName">Filename of the log.</param>
+        /// <returns>True/false based on filename validity.</returns>
         private bool IsValidLogFile(string logFileName)
         {
             if (String.IsNullOrEmpty(logFileName))

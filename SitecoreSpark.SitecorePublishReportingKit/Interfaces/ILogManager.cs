@@ -28,10 +28,17 @@
         string[] GetLogContents(string logFileName);
 
         /// <summary>
-        /// SHould return a string of the contents of a log file.
+        /// Should return a string of the contents of a log file.
         /// </summary>
-        /// <param name="logFileName"></param>
+        /// <param name="logFileName">Filename of the log.</param>
         /// <returns>String of file contents.</returns>
         string GetLogContentsRaw(string logFileName);
+
+        /// <summary>
+        /// Should return a log file formatted for CSV output.
+        /// </summary>
+        /// <param name="logFileName">Filename of the log.</param>
+        /// <returns>CSV-formatted string of log contents.</returns>
+        string GetFileForCSV(string logFileName);
     }
 }
