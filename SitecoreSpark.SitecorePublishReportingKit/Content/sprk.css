@@ -5,7 +5,7 @@ h1 { font-weight: bold; }
 .container { width: 95%; margin: 0 auto; }
 .content { padding: 0.5em; background-color: #FFF; }
 
-.menu { margin: 0 0 1em 0.25em; }
+.menu { margin: 0 0.25em 1em 0.25em; }
 
 table { width: 100%; }
 table td, table th { text-align: center; padding: 0.5em 0.25em; }
