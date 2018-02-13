@@ -1,4 +1,11 @@
-﻿MIT License
+﻿--------------------------------------------------------------------------------
+
+MIT License for Sitecore Publish Reporting Kit
+MIT License for tablesort v5.0.2
+
+--------------------------------------------------------------------------------
+
+MIT License
 
 Copyright (c) 2018 Brandon Bruno
 
