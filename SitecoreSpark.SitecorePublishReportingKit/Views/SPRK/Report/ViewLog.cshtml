@@ -4,6 +4,20 @@
     ViewBag.Title = "View Log: " + Model.Title;
 }
 
+<div class="menu">
+    <a href="/sitecore/sprk/report/download?log=@Model.FileName" class="btn">Download (CSV)</a>
+
+    @if (Model.UpdatedOnly)
+    {
+        <a href="/sitecore/sprk/report/viewlog?log=@Model.FileName" class="btn">Full Log</a>
+    }
+    else
+    {
+        <a href="/sitecore/sprk/report/viewlog?log=@Model.FileName&updated=true" class="btn">Updated Only</a>
+    }
+    
+</div>
+
 @if (Model.Rows.Count > 0)
 {
     <table>

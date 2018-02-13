@@ -34,12 +34,14 @@ namespace SitecoreSpark.SPRK.Controllers
             return View("~/Views/SPRK/Report/Index.cshtml", viewModel);
         }
 
-        public ActionResult ViewLog(string log)
+        public ActionResult ViewLog(string log, bool updated = false)
         {
             LogDetailViewModel viewModel = new LogDetailViewModel();
-            string[] contents = _logManager.GetLogContents(log);
+            string[] contents = _logManager.GetLogContents(log, updated);
 
             viewModel.Title = log;
+            viewModel.FileName = log;
+            viewModel.UpdatedOnly = updated;
             viewModel.MapToViewModel(contents);
 
             return View("~/Views/SPRK/Report/ViewLog.cshtml", viewModel);

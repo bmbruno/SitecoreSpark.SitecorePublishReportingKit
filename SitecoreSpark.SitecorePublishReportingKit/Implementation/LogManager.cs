@@ -85,6 +85,26 @@ namespace SitecoreSpark.SPRK.Implementation
         }
 
         /// <summary>
+        /// Returns the contents of a log file by line, affected by given parameters.
+        /// </summary>
+        /// <param name="logFileName">Filename of the log.</param>
+        /// <param name="updated">Display only items with a Created, Modified, or Deleted operation.</param>
+        /// <returns>File contents in an array of strings.</returns>
+        public string[] GetLogContents(string logFileName, bool updated)
+        {
+            string[] contents = this.GetLogContents(logFileName);
+
+            if (contents == null)
+                return null;
+
+            // Updated flag - remove lines with an operation result of "None" or "Skipped"
+            if (updated)
+                return contents.Where(u => !u.Contains("|None|") && !u.Contains("|Skipped|")).ToArray();
+            else
+                return contents;
+        }
+
+        /// <summary>
         /// Returns the contents of a log file in whole.
         /// </summary>
         /// <param name="logFileName">Filename of the log.</param>
