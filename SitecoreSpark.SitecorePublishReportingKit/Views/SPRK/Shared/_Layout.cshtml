@@ -5,13 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
         <link type="text/css" rel="stylesheet" href="~/Content/sprk.css" />
-        
+        <link type="text/css" rel="stylesheet" href="~/Content/sprk.font-awesome.min.css" />
+
         <title>@ViewBag.Title - Sitecore Publish Reporting Kit</title>
     </head>
     <body>
         
         <div class="container">
-            <a href="/sitecore/sprk" class="btn default">Publish Logs</a>
+            <a href="/sitecore/sprk" class="btn default"><i class="fa fa-th-list" aria-hidden="true"></i> Publish Logs</a>
         </div>
 
         <div class="container">
@@ -30,6 +31,8 @@
         </div>
 
         <script src="~/Scripts/sprk.tablesort.min.js"></script>
+
+        <!-- TODO: move this to PageScripts section on viewlog page -->
         <script>
             new Tablesort(document.getElementById('LogDataTable'));
         </script>

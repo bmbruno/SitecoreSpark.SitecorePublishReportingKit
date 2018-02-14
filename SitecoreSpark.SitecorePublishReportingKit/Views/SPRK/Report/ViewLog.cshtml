@@ -1,20 +1,20 @@
 ﻿@model SitecoreSpark.SPRK.ViewModels.LogDetailViewModel
 @{
     Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
-    ViewBag.Title = "View Log: " + Model.Title;
+    ViewBag.Title = "Log: " + Model.Title;
 }
 
 <div class="menu">
     
     @if (Model.ModifiedOnly)
     {
-        <a href="/sitecore/sprk/report/viewlog?log=@Model.FileName" class="btn">Full Log</a>
-        <a href="/sitecore/sprk/report/download?log=@Model.FileName&modified=true" class="btn">Download (CSV)</a>
+        <a href="/sitecore/sprk/report/viewlog?log=@Model.FileName" class="btn"><i class="fa fa-file-text" aria-hidden="true"></i> Full Log</a>
+        <a href="/sitecore/sprk/report/download?log=@Model.FileName&modified=true" class="btn"><i class="fa fa-download"></i> Download (CSV)</a>
     }
     else
     {
-        <a href="/sitecore/sprk/report/viewlog?log=@Model.FileName&modified=true" class="btn">Updated Only</a>
-        <a href="/sitecore/sprk/report/download?log=@Model.FileName" class="btn">Download (CSV)</a>
+        <a href="/sitecore/sprk/report/viewlog?log=@Model.FileName&modified=true" class="btn"><i class="fa fa-retweet" aria-hidden="true"></i> Updated Only</a>
+        <a href="/sitecore/sprk/report/download?log=@Model.FileName" class="btn"><i class="fa fa-download"></i> Download (CSV)</a>
     }
     
 </div>
