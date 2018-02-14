@@ -32,9 +32,7 @@
 
         <script src="~/Scripts/sprk.tablesort.min.js"></script>
 
-        <!-- TODO: move this to PageScripts section on viewlog page -->
-        <script>
-            new Tablesort(document.getElementById('LogDataTable'));
-        </script>
+        @RenderSection("PageScripts", required: false)
+
     </body>
 </html>
