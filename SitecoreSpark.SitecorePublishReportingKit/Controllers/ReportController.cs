@@ -27,9 +27,10 @@ namespace SitecoreSpark.SPRK.Controllers
             LogIndexViewModel viewModel = new LogIndexViewModel();
             LogItem[] logItems = _logManager.GetLogItems();
 
-            // TODO: handle "null" result from GetLogItems
-
-            viewModel.MapToViewModel(logItems);
+            if (logItems != null)
+            {
+                viewModel.MapToViewModel(logItems);
+            }
             
             return View("~/Views/SPRK/Report/Index.cshtml", viewModel);
         }
