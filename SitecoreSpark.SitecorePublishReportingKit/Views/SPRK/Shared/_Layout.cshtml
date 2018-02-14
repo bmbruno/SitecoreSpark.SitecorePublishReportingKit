@@ -10,13 +10,17 @@
         <title>@ViewBag.Title - Sitecore Publish Reporting Kit</title>
     </head>
     <body>
-        
+
+        <div class="container">
+            <h1>Sitecore Publish Reporting Kit (SPRK)</h1>
+        </div>
+
         <div class="container">
             <a href="/sitecore/sprk" class="btn default"><i class="fa fa-th-list" aria-hidden="true"></i> Publish Logs</a>
         </div>
 
         <div class="container">
-            <h1>@ViewBag.Title</h1>
+            <h2>@ViewBag.Title</h2>
         </div>
 
         @if (TempData["Error"] != null)

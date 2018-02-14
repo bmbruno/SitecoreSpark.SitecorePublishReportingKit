@@ -1,6 +1,7 @@
 ﻿a, a:visited { text-decoration: none; }
 body { background-color: #F1F1F1; font-family: 'Arial', sans-serif; padding: 1em 0;}
-h1 { font-weight: bold; }
+h1 { font-weight: bold; font-size: 1.25em; margin: 0 0 1em 0; padding-bottom: 0.25em; text-align: right; border-bottom: 1px solid #979797; }
+h2 { font-weight: bold; font-size: 1.5em; }
 
 .container { width: 95%; margin: 0 auto; }
 .content { padding: 0.5em; background-color: #FFF; }
