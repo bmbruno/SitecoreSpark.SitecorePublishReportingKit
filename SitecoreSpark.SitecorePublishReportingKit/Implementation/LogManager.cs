@@ -38,7 +38,7 @@ namespace SitecoreSpark.SPRK.Implementation
                     Date = GetDateFromFileName(Path.GetFileNameWithoutExtension(allFiles[i])),
                     FileName = Path.GetFileNameWithoutExtension(allFiles[i]),
                     FilePath = allFiles[i],
-                    FileSizeKB = Convert.ToInt32(info.Length / 1000)
+                    FileSizeKB = Convert.ToInt32(Math.Ceiling(info.Length / 1000.0))
                 });
             }
 
