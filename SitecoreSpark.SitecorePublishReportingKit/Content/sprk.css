@@ -2,6 +2,7 @@
 body { background-color: #F1F1F1; font-family: 'Arial', sans-serif; padding: 1em 0;}
 h1 { font-weight: bold; font-size: 1.25em; margin: 0 0 1em 0; padding-bottom: 0.25em; text-align: right; border-bottom: 1px solid #979797; }
 h2 { font-weight: bold; font-size: 1.5em; }
+.center { text-align: center; }
 
 .container { width: 95%; margin: 0 auto; }
 .content { padding: 0.5em; background-color: #FFF; }
@@ -26,6 +27,7 @@ table tbody tr:nth-child(even) { background-color: #e8e8e8; }
 .message { padding: 1em; margin: 1em 0; font-weight: bold; color: #FFF; text-shadow: 2px 2px 0 #000; border-radius: 4px; }
 .message.success { background-color: #328028; }
 .message.warning { background-color: #b45e02; }
+.message.info { background-color: #111C24; }
 .message.error { background-color: #871313; }
 
 .mono { font-family: monospace; }

@@ -31,7 +31,7 @@ namespace SitecoreSpark.SPRK.Controllers
             {
                 viewModel.MapToViewModel(logItems);
             }
-            
+
             return View("~/Views/SPRK/Report/Index.cshtml", viewModel);
         }
 
