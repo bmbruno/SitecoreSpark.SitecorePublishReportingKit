@@ -57,7 +57,7 @@ You can also verify that the "SPRK Publish Logs" reporting tools are loading fro
 
 ## Upgrading
 
-If you're upgrading from a previous version, the Sitecore package will prompt you for overwrite/skip actions on all configurable files. If you have modified any of these files from their defaults, you will want to merge them manually:
+If you're upgrading from a previous version, the Sitecore package will prompt you for overwrite/skip actions. Most files are safe to overwrite, but if you have modified any of the following files from their defaults, you will want to merge them manually:
 
 ```
 \App_Config\Include\SitecoreSpark\SPRK\SitecoreSpark.SPRK.Settings.config
