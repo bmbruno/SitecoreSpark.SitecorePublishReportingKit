@@ -120,7 +120,7 @@ namespace SitecoreSpark.SPRK
 
             if (log != null && log.Count > 0)
             {
-                string filePath = Path.Combine(_logFolderPath, String.Format("{0}{1}.txt", _logFilePrefix, DateTime.Today.ToString("yyyyMMdd")));
+                string filePath = Path.Combine(_logFolderPath, String.Format("{0}.{1}.txt", _logFilePrefix, DateTime.Today.ToString("yyyyMMdd")));
                 filePath = FileUtil.MapPath(filePath);
 
                 if (!Directory.Exists(_logFolderPath))
