@@ -138,7 +138,6 @@ namespace SitecoreSpark.SPRK.Implementation
             // File header
             sb.Append($"{this._csvHeader}\n");
 
-            // TODO: check if pipe replacement is necessary on each line before calling replace()
             foreach (string row in contents)
             {
                 string line = row;
