@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -57,7 +58,7 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Kernel.NoReferences.8.2.170728\lib\NET452\Sitecore.Kernel.dll</HintPath>
+      <HintPath>..\packages\Sitecore.Kernel.NoReferences.8.2.160729\lib\NET452\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
@@ -103,6 +104,8 @@
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Mapping\ViewModelMappingExtensions.cs" />
+    <Compile Include="ViewModels\PublishQueueViewModel.cs" />
+    <Compile Include="ViewModels\PublishQueueItemViewModel.cs" />
     <Compile Include="ViewModels\LogRowViewModel.cs" />
     <Compile Include="ViewModels\LogDetailViewModel.cs" />
     <Compile Include="ViewModels\LogItemViewModel.cs" />
@@ -130,6 +133,7 @@
     <Content Include="Views\SPRK\Report\Index.cshtml" />
     <Content Include="Views\SPRK\Report\ViewLog.cshtml" />
     <Content Include="Views\SPRK\Shared\_Layout.cshtml" />
+    <Content Include="Views\SPRK\Report\IncrementalPublishQueue.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

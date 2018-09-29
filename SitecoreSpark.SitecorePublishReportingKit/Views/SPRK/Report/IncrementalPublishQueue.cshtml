@@ -1,0 +1,40 @@
+﻿@model SitecoreSpark.SPRK.ViewModels.PublishQueueViewModel
+@{
+    Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
+    ViewBag.Title = "Publish Queue - Incremental";
+}
+
+@if (Model.CandidateItems.Count > 0)
+{
+    <table>
+        <thead>
+            <tr>
+                <th>Item ID</th>
+                <th>Name</th>
+                <th>Language</th>
+                <th>Action</th>
+                <th>From</th>
+                <th>To</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CandidateItems)
+            {
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="message info center">
+        Publish Queue is empty.
+    </div>
+}

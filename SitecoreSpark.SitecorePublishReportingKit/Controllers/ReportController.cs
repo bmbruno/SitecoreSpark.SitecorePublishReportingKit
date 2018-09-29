@@ -5,6 +5,8 @@ using SitecoreSpark.SPRK.Mapping;
 using System;
 using System.Web.Mvc;
 using System.Text;
+using System.Collections.Generic;
+using Sitecore.Publishing.Pipelines.Publish;
 
 namespace SitecoreSpark.SPRK.Controllers
 {
@@ -65,6 +67,23 @@ namespace SitecoreSpark.SPRK.Controllers
         {
             string csv = _logManager.GetFileForCSV(log, modified);
             return File(fileContents: new UTF8Encoding().GetBytes(csv), contentType: "text/csv", fileDownloadName: $"{log}.csv");
+        }
+
+        public ActionResult IncrementalPublishQueue()
+        {
+            //
+            // TODO: POC code; clean up, use configs, harden, etc.
+            //
+
+            Sitecore.Data.Database master = Sitecore.Data.Database.GetDatabase("master");
+            Sitecore.Data.Database web = Sitecore.Data.Database.GetDatabase("web");
+
+            Sitecore.Publishing.PublishOptions options = new Sitecore.Publishing.PublishOptions(master, web, Sitecore.Publishing.PublishMode.Incremental, Sitecore.Globalization.Language.Parse("en"), DateTime.Now);
+
+            // Get all the publishing candidates
+            IEnumerable<PublishingCandidate> candidatesList = Sitecore.Publishing.Pipelines.Publish.PublishQueue.GetPublishQueue(options);
+
+            return View();
         }
     }
 }
