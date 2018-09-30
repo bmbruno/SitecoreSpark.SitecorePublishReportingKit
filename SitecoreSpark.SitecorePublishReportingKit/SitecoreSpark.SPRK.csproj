@@ -158,10 +158,11 @@
     <Content Include="Scripts\sprk.tablesort.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\SPRK\Report\Find.cshtml" />
-    <Content Include="Views\SPRK\Report\Index.cshtml" />
+    <Content Include="Views\SPRK\Report\PublishLogs.cshtml" />
     <Content Include="Views\SPRK\Report\ViewLog.cshtml" />
     <Content Include="Views\SPRK\Shared\_Layout.cshtml" />
     <Content Include="Views\SPRK\Report\IncrementalPublishQueue.cshtml" />
+    <Content Include="Views\SPRK\Report\Index.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

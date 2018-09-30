@@ -26,6 +26,11 @@ namespace SitecoreSpark.SPRK.Controllers
 
         public ActionResult Index()
         {
+            return View("~/Views/SPRK/Report/Index.cshtml");
+        }
+
+        public ActionResult PublishLogs()
+        {
             LogIndexViewModel viewModel = new LogIndexViewModel();
             LogItem[] logItems = _logManager.GetLogItems();
 
@@ -34,7 +39,7 @@ namespace SitecoreSpark.SPRK.Controllers
                 viewModel.MapToViewModel(logItems);
             }
 
-            return View("~/Views/SPRK/Report/Index.cshtml", viewModel);
+            return View("~/Views/SPRK/Report/PublishLogs.cshtml", viewModel);
         }
 
         public ActionResult ViewLog(string log, bool modified = false)
