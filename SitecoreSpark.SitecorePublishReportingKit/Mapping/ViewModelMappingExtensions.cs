@@ -1,4 +1,5 @@
-﻿using SitecoreSpark.SPRK.Models;
+﻿using Sitecore.Publishing.Pipelines.Publish;
+using SitecoreSpark.SPRK.Models;
 using SitecoreSpark.SPRK.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -58,6 +59,27 @@ namespace SitecoreSpark.SPRK.Mapping
         }
 
         /// <summary>
+        /// Populates a PublishQueueViewModel by mapping the related objects to it.
+        /// </summary>
+        /// <param name="vm">View model to be mapped.</param>
+        /// <param name="candidateItems">Enumerable list of PublishingCandidate items from the PublishQueue class.</param>
+        public static void MapToViewModel(this PublishQueueViewModel vm, IEnumerable<PublishingCandidate> candidateItems)
+        {
+            foreach (PublishingCandidate candidate in candidateItems)
+            {
+                vm.CandidateItems.Add(new PublishQueueItemViewModel()
+                {
+                    ItemID = candidate.ItemId.ToString(),
+                    Name = candidate.ItemName,
+                    Language = candidate.Language,
+                    Action = candidate.PublishAction.ToString(),
+                    SourceDatabase = candidate.PublishOptions.SourceDatabase.Name,
+                    Targetdatabase = candidate.PublishOptions.TargetDatabase.Name
+                });
+            }
+        }
+
+        /// <summary>
         /// Cleans up text from file and ensures it is a valid string for a view model. Includes logic to convert ##PIPE## tokens back to pipe character.
         /// </summary>
         /// <param name="input">Input text to sanitize.</param>
@@ -74,5 +96,6 @@ namespace SitecoreSpark.SPRK.Mapping
 
             return input;
         }
+
     }
 }

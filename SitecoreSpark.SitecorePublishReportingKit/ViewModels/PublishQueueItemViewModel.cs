@@ -7,6 +7,16 @@ namespace SitecoreSpark.SPRK.ViewModels
 {
     public class PublishQueueItemViewModel
     {
-        public string Date { get; set; }
+        public string ItemID { get; set; }
+
+        public string Name { get; set; }
+
+        public string Language { get; set; }
+
+        public string Action { get; set; }
+
+        public string SourceDatabase { get; set; }
+
+        public string Targetdatabase { get; set; }
     }
 }

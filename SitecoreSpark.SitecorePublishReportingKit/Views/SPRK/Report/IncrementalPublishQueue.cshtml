@@ -13,20 +13,20 @@
                 <th>Name</th>
                 <th>Language</th>
                 <th>Action</th>
-                <th>From</th>
-                <th>To</th>
+                <th>Source DB</th>
+                <th>Target DB</th>
             </tr>
         </thead>
         <tbody>
             @foreach (var item in Model.CandidateItems)
             {
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
+                <td>@item.ItemID</td>
+                <td>@item.Name</td>
+                <td>@item.Language</td>
+                <td>@item.Action</td>
+                <td>@item.SourceDatabase</td>
+                <td>@item.Targetdatabase</td>
             </tr>
             }
         </tbody>

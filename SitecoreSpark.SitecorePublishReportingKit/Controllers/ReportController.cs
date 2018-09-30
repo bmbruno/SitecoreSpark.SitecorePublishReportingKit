@@ -75,15 +75,20 @@ namespace SitecoreSpark.SPRK.Controllers
             // TODO: POC code; clean up, use configs, harden, etc.
             //
 
+            // TODO: figure out how to deal with source/target database configurations
             Sitecore.Data.Database master = Sitecore.Data.Database.GetDatabase("master");
             Sitecore.Data.Database web = Sitecore.Data.Database.GetDatabase("web");
 
             Sitecore.Publishing.PublishOptions options = new Sitecore.Publishing.PublishOptions(master, web, Sitecore.Publishing.PublishMode.Incremental, Sitecore.Globalization.Language.Parse("en"), DateTime.Now);
 
             // Get all the publishing candidates
-            IEnumerable<PublishingCandidate> candidatesList = Sitecore.Publishing.Pipelines.Publish.PublishQueue.GetPublishQueue(options);
+            IEnumerable<PublishingCandidate> candidateList = Sitecore.Publishing.Pipelines.Publish.PublishQueue.GetPublishQueue(options);
 
-            return View();
+            // Build viewmodel
+            PublishQueueViewModel viewModel = new PublishQueueViewModel();
+            viewModel.MapToViewModel(candidateList);
+
+            return View("~/Views/SPRK/Report/IncrementalPublishQueue.cshtml", viewModel);
         }
     }
 }
