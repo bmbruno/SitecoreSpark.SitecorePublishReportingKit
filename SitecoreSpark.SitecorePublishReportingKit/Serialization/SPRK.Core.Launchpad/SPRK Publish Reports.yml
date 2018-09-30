@@ -1,0 +1,97 @@
+﻿---
+ID: "7979e393-0ad8-4aec-b02a-48a25a86d12a"
+Parent: "e8ed70ba-1401-4bcf-b3f9-5a60fe67c8f5"
+Template: "d4c7f5f9-8977-4e0c-b6ce-28ae8e0753e2"
+Path: /sitecore/client/Applications/Launchpad/PageSettings/Buttons/Tools/SPRK Publish Reports
+DB: core
+SharedFields:
+- ID: "044e3fdb-22ae-4e6c-b50e-2abdfbabd338"
+  Hint: Link
+  Value: /sitecore/sprk
+- ID: "ba3f86a2-4a1c-4d78-b63d-91c2779c1b5e"
+  Hint: __Sortorder
+  Value: 400
+- ID: "d25b56d4-23b6-4462-be25-b6a6d7f38e13"
+  Hint: Icon
+  Value: Apps/32x32/Scripts.png
+- ID: "dc0c067b-8d1a-4aca-9852-e6b29139a63d"
+  Hint: OpenNewTab
+  Type: Checkbox
+  Value: 0
+- ID: "dec8d2d5-e3cf-48b6-a653-8e69e2716641"
+  Hint: __Security
+  Value: |
+    ar|sitecore\Sitecore Client Designing|pd|+item:read|pe|+item:read|ar|sitecore\Sitecore Client Authoring|pd|+item:read|pe|+item:read|
+Languages:
+- Language: da
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Indholdsredigering
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170728T141912Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "aa4a4643-5bfc-45a7-b9d9-5183a5211d99"
+      Hint: Text
+      Value: Indholdsredigering
+- Language: "de-DE"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: Content Editor
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170728T142306Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "aa4a4643-5bfc-45a7-b9d9-5183a5211d99"
+      Hint: Text
+      Value: Content Editor
+- Language: en
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "012a2076-c940-435e-82f3-910e7af891e2"
+      Hint: OpenIframe
+      Type: Checkbox
+      Value: 1
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20140702T140144Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "aa4a4643-5bfc-45a7-b9d9-5183a5211d99"
+      Hint: Text
+      Value: SPRK Publish Reports
+- Language: "ja-JP"
+  Fields:
+  - ID: "b5e02ad9-d56f-4c41-a065-a133db87bdeb"
+    Hint: __Display name
+    Value: コンテンツ エディター
+  Versions:
+  - Version: 1
+    Fields:
+    - ID: "25bed78c-4957-4165-998a-ca1b52f67497"
+      Hint: __Created
+      Value: 20170728T142613Z
+    - ID: "5dd74568-4d4b-44c1-b513-0af5f4cda34f"
+      Hint: __Created by
+      Value: |
+        sitecore\admin
+    - ID: "aa4a4643-5bfc-45a7-b9d9-5183a5211d99"
+      Hint: Text
+      Value: コンテンツ エディター
