@@ -163,6 +163,7 @@
     <Content Include="Views\SPRK\Shared\_Layout.cshtml" />
     <Content Include="Views\SPRK\Report\IncrementalPublishQueue.cshtml" />
     <Content Include="Views\SPRK\Report\Index.cshtml" />
+    <Content Include="Views\SPRK\Shared\_MainMenu.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
