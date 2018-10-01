@@ -30,6 +30,9 @@ table tbody tr:nth-child(even) { background-color: #e8e8e8; }
 .message.info { background-color: #111C24; }
 .message.error { background-color: #871313; }
 
+.report-list { }
+.report-list li { list-style-type: none; margin: 0; }
+
 .mono { font-family: monospace; }
 
 @media (min-width: 40em)

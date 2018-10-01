@@ -4,35 +4,46 @@
     ViewBag.Title = "Publish Logs";
 }
 
+<div class="container">
+    <a href="/sitecore/sprk/Report/" class="btn default"><i class="fa fa-home" aria-hidden="true"></i> Main Menu</a>
+</div>
 
-@if (Model.LogItems.Count > 0)
-{
-    <table>
-        <thead>
-            <tr>
-                <th>Log Date</th>
-                <th>Size</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var log in Model.LogItems)
-            {
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<div class="container content">
+
+    @if (Model.LogItems.Count > 0)
+    {
+        <table>
+            <thead>
                 <tr>
-                    <td>@log.Date</td>
-                    <td>@log.FileSizeKB KB</td>
-                    <td>
-                        <a href="/sitecore/sprk/report/viewlog?log=@log.FileName" class="btn"><i class="fa fa-file-text" aria-hidden="true"></i> View Log</a>
-                        <a href="/sitecore/sprk/report/viewraw?log=@log.FileName" class="btn" target="_blank"><i class="fa fa-align-justify" aria-hidden="true"></i> Raw</a>
-                    </td>
+                    <th>Log Date</th>
+                    <th>Size</th>
+                    <th>Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <div class="message info center">
-        No logs available.
-    </div>
-}
+            </thead>
+            <tbody>
+                @foreach (var log in Model.LogItems)
+                {
+                    <tr>
+                        <td>@log.Date</td>
+                        <td>@log.FileSizeKB KB</td>
+                        <td>
+                            <a href="/sitecore/sprk/report/viewlog?log=@log.FileName" class="btn"><i class="fa fa-file-text" aria-hidden="true"></i> View Log</a>
+                            <a href="/sitecore/sprk/report/viewraw?log=@log.FileName" class="btn" target="_blank"><i class="fa fa-align-justify" aria-hidden="true"></i> Raw</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="message info center">
+            No logs available.
+        </div>
+    }
+
+</div>
