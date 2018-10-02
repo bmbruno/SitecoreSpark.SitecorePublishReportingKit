@@ -1,12 +1,15 @@
-﻿using SitecoreSpark.SPRK.Interfaces;
-using SitecoreSpark.SPRK.Models;
-using SitecoreSpark.SPRK.ViewModels;
-using SitecoreSpark.SPRK.Mapping;
-using System;
+﻿using System;
 using System.Web.Mvc;
 using System.Text;
 using System.Collections.Generic;
 using Sitecore.Publishing.Pipelines.Publish;
+using Sitecore.Data;
+using Sitecore.Publishing;
+using SitecoreSpark.SPRK.Interfaces;
+using SitecoreSpark.SPRK.Models;
+using SitecoreSpark.SPRK.ViewModels;
+using SitecoreSpark.SPRK.Mapping;
+using Sitecore.Globalization;
 
 namespace SitecoreSpark.SPRK.Controllers
 {
@@ -80,11 +83,11 @@ namespace SitecoreSpark.SPRK.Controllers
             // TODO: POC code; clean up, use configs, harden, etc.
             //
 
-            // TODO: figure out how to deal with source/target database configurations
-            Sitecore.Data.Database master = Sitecore.Data.Database.GetDatabase("master");
-            Sitecore.Data.Database web = Sitecore.Data.Database.GetDatabase("web");
+            Database masterDB = Database.GetDatabase("master");
+            Database webDB = Database.GetDatabase(Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.TargetDatabase"));
 
-            Sitecore.Publishing.PublishOptions options = new Sitecore.Publishing.PublishOptions(master, web, Sitecore.Publishing.PublishMode.Incremental, Sitecore.Globalization.Language.Parse("en"), DateTime.Now);
+            // TODO: handle all languages
+            PublishOptions options = new PublishOptions(masterDB, webDB, PublishMode.Incremental, Language.Parse("en"), DateTime.Now);
 
             // Get all the publishing candidates
             IEnumerable<PublishingCandidate> candidateList = Sitecore.Publishing.Pipelines.Publish.PublishQueue.GetPublishQueue(options);

@@ -31,10 +31,10 @@ table tbody tr:nth-child(even) { background-color: #e8e8e8; }
 .message.info { background-color: #111C24; }
 .message.error { background-color: #871313; }
 
-.report-list { padding-inline-start: 0; margin: 0 3em; }
+.report-list { padding-inline-start: 0; margin: 1em 3em; }
 .report-list li { list-style-type: none; margin: 0; margin-bottom: 1em; }
 .report-list li:last-of-type { margin: 0; }
-.report-list li a { color: #000; background-color: #ebebeb; display: block; padding: 2em; border-radius: 8px; box-shadow: 0 2px 0 #c4c4c4; }
+.report-list li a { color: #000; display: block; padding: 2em; border-radius: 8px; box-shadow: 0 2px 0 #CCC; border: 1px solid #CCC; }
 .report-list li a:hover { background-color: #cbcbcb; box-shadow: 0 3px 0 #828282; }
 .report-list li a:active { box-shadow: none; position: relative; bottom: -2px; }
 .report-list li h3 { margin: 0; }
