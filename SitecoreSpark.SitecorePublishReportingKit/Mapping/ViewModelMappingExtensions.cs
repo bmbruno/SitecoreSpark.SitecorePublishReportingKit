@@ -75,7 +75,6 @@ namespace SitecoreSpark.SPRK.Mapping
                     ItemID = candidate.ItemID.ToString(),
                     Language = candidate.Language,
                     ItemName = candidate.ItemName,
-                    FullPath = candidate.FullPath,
                     Action = candidate.Action,
                     SourceDatabase = candidate.SourceDatabase,
                     Targetdatabase = candidate.TargetDatabase

@@ -41,6 +41,7 @@ table tbody tr:nth-child(even) { background-color: #e8e8e8; }
 .report-list li p:last-of-type { margin-bottom: 0; }
 
 .mono { font-family: monospace; }
+.narrow-padding { padding: inherit 0.25em; }
 
 @media (min-width: 40em)
 {

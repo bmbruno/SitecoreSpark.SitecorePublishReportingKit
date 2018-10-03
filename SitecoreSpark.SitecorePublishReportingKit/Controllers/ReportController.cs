@@ -76,11 +76,11 @@ namespace SitecoreSpark.SPRK.Controllers
             return File(fileContents: new UTF8Encoding().GetBytes(csv), contentType: "text/csv", fileDownloadName: $"{log}.csv");
         }
 
-        public ActionResult IncrementalPublishQueue(string lang = "en")
+        public ActionResult IncrementalPublishQueue()
         {
             // Get report data
             ReportService reportService = new ReportService();
-            IEnumerable<PublishQueueItem> reportData = reportService.IncrementalPublishQueue_GetData(lang);
+            IEnumerable<PublishQueueItem> reportData = reportService.IncrementalPublishQueue_GetData();
 
             // Build viewmodel
             PublishQueueViewModel viewModel = new PublishQueueViewModel();

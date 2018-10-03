@@ -17,17 +17,18 @@ namespace SitecoreSpark.SPRK.Services
         public ReportService() { }
 
         /// <summary>
-        /// Loads data for the Incremental Publish Queue report. Utilizes Sitecore.Publishing.Pipelines.Publish.GetPublishQueue(PublishOptions) method as a source of data, then augments it based on item workflow state: only returns items in a final workflow state.
+        /// Loads data for the Incremental Publish Queue report (includes all item languages). Utilizes Sitecore.Publishing.Pipelines.Publish.GetPublishQueue(PublishOptions) method as a source of data, then augments it based on item workflow state: only returns items in a final workflow state.
         /// </summary>
         /// <param name="languageCode">Language code to load. Default is "en". Must otherwise use fully-qualified language code (example: "ja-JP").</param>
         /// <returns>Enumerable of publish candidate items.</returns>
-        public IEnumerable<PublishQueueItem> IncrementalPublishQueue_GetData(string languageCode)
+        public IEnumerable<PublishQueueItem> IncrementalPublishQueue_GetData()
         {
             Database masterDB = Database.GetDatabase(Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.SourceDatabase"));
             Database webDB = Database.GetDatabase(Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.TargetDatabase"));
             List<PublishQueueItem> model = new List<PublishQueueItem>();
 
-            PublishOptions options = new PublishOptions(masterDB, webDB, PublishMode.Incremental, Language.Parse(languageCode), DateTime.Now.AddDays(1));
+            // Note on language: the actual publish pipeline uses the language parameter; it doesn't matter what we pass in for this usage
+            PublishOptions options = new PublishOptions(masterDB, webDB, PublishMode.Incremental, Language.Parse("en"), DateTime.Now.AddDays(1));
             IEnumerable<PublishingCandidate> candidateList = PublishQueue.GetPublishQueue(options);
 
             if (candidateList != null && candidateList.Count() > 0)
@@ -41,20 +42,29 @@ namespace SitecoreSpark.SPRK.Services
                     if (itemWorkflow == null)
                         continue;
 
-                    WorkflowState state = itemWorkflow.GetState(scItem);
-
-                    if (state.FinalState)
+                    // Check for all language versions (Workflow is shared, but Workflow State may be unique across languages)
+                    foreach (Language language in scItem.Languages)
                     {
-                        // Map to domain model
-                        model.Add(new PublishQueueItem()
+                        Item scLanguageItem = masterDB.GetItem(itemId: scItem.ID, language: language);
+
+                        if (scLanguageItem.Versions.Count > 0)
                         {
-                            ItemID = candidate.ItemId.Guid,
-                            ItemName = scItem.Name,
-                            FullPath = scItem.Paths.FullPath,
-                            Action = candidate.PublishAction.ToString(),
-                            SourceDatabase = candidate.PublishOptions.SourceDatabase.Name,
-                            TargetDatabase = candidate.PublishOptions.TargetDatabase.Name
-                        });
+                            WorkflowState state = itemWorkflow.GetState(scLanguageItem);
+
+                            if (state != null && state.FinalState)
+                            {
+                                // Map to domain model
+                                model.Add(new PublishQueueItem()
+                                {
+                                    ItemID = candidate.ItemId.Guid,
+                                    ItemName = scItem.Name,
+                                    Language = language.Name,
+                                    Action = candidate.PublishAction.ToString(),
+                                    SourceDatabase = candidate.PublishOptions.SourceDatabase.Name,
+                                    TargetDatabase = candidate.PublishOptions.TargetDatabase.Name
+                                });
+                            }
+                        }
                     }
                 }
             }
