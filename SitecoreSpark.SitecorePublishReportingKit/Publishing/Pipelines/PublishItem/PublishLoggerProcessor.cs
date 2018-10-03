@@ -53,6 +53,15 @@ namespace SitecoreSpark.SPRK.Publishing.Pipelines.PublishItem
                     {
                         Sitecore.Diagnostics.Log.Error($"[SPRK] Exception logging publish for item ID {context.ItemId.ToString()}. Exception: {exc.ToString()}", this);
                     }
+
+                    try
+                    {
+                        _logger.HandleLogFlush(logKey.Value);
+                    }
+                    catch (Exception exc)
+                    {
+                        Sitecore.Diagnostics.Log.Error($"[SPRK] Exception during log flush: {exc.ToString()}", this);
+                    }
                 }
             }
             catch (Exception exc)
