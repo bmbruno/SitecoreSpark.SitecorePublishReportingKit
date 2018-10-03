@@ -90,5 +90,10 @@ namespace SitecoreSpark.SPRK.Controllers
 
             return View("~/Views/SPRK/Report/IncrementalPublishQueue.cshtml", viewModel);
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+        }
     }
 }

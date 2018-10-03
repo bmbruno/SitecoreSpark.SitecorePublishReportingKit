@@ -11,10 +11,6 @@ namespace SitecoreSpark.SPRK
     {
         public void Configure(IServiceCollection serviceCollection)
         {
-            //
-            // TODO: Review these registrations to ensure they are the correct types that I intended
-            //
-
             // Controllers
             serviceCollection.AddTransient<ReportController>();
 
