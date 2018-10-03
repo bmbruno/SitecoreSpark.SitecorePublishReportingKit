@@ -34,10 +34,11 @@ table tbody tr:nth-child(even) { background-color: #e8e8e8; }
 .report-list { padding-inline-start: 0; margin: 1em 3em; }
 .report-list li { list-style-type: none; margin: 0; margin-bottom: 1em; }
 .report-list li:last-of-type { margin: 0; }
-.report-list li a { color: #000; display: block; padding: 2em; border-radius: 8px; box-shadow: 0 2px 0 #CCC; border: 1px solid #CCC; }
-.report-list li a:hover { background-color: #cbcbcb; box-shadow: 0 3px 0 #828282; }
+.report-list li a { color: #000; background-color: #EFEFEF; display: block; padding: 2em; border-radius: 8px; box-shadow: 0 2px 0 #BBB; border: 1px solid #BBB; }
+.report-list li a:hover { background-color: #DEDEDE; box-shadow: 0 3px 0 #828282; }
 .report-list li a:active { box-shadow: none; position: relative; bottom: -2px; }
 .report-list li h3 { margin: 0; }
+.report-list li a:hover h3 { text-shadow: 1px 1px 0 #FFF; }
 .report-list li p:last-of-type { margin-bottom: 0; }
 
 .mono { font-family: monospace; }
