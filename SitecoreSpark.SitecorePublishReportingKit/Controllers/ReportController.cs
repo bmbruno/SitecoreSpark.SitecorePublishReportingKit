@@ -2,14 +2,13 @@
 using System.Web.Mvc;
 using System.Text;
 using System.Collections.Generic;
-using Sitecore.Publishing.Pipelines.Publish;
 using Sitecore.Data;
-using Sitecore.Publishing;
+
 using SitecoreSpark.SPRK.Interfaces;
 using SitecoreSpark.SPRK.Models;
 using SitecoreSpark.SPRK.ViewModels;
 using SitecoreSpark.SPRK.Mapping;
-using Sitecore.Globalization;
+using SitecoreSpark.SPRK.Services;
 
 namespace SitecoreSpark.SPRK.Controllers
 {
@@ -77,24 +76,21 @@ namespace SitecoreSpark.SPRK.Controllers
             return File(fileContents: new UTF8Encoding().GetBytes(csv), contentType: "text/csv", fileDownloadName: $"{log}.csv");
         }
 
-        public ActionResult IncrementalPublishQueue()
+        public ActionResult IncrementalPublishQueue(string lang = "en")
         {
             //
             // TODO: POC code; clean up, use configs, harden, etc.
             //
 
-            Database masterDB = Database.GetDatabase("master");
-            Database webDB = Database.GetDatabase(Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.TargetDatabase"));
-
-            // TODO: handle all languages
-            PublishOptions options = new PublishOptions(masterDB, webDB, PublishMode.Incremental, Language.Parse("en"), DateTime.Now);
-
-            // Get all the publishing candidates
-            IEnumerable<PublishingCandidate> candidateList = Sitecore.Publishing.Pipelines.Publish.PublishQueue.GetPublishQueue(options);
+            // Get report data
+            ReportService reportService = new ReportService();
+            IEnumerable<PublishingCandidateItem> reportData = reportService.IncrementalPublishQueue_GetData(lang);
 
             // Build viewmodel
             PublishQueueViewModel viewModel = new PublishQueueViewModel();
-            viewModel.MapToViewModel(candidateList);
+
+            if (reportData != null)
+                viewModel.MapToViewModel(reportData);
 
             return View("~/Views/SPRK/Report/IncrementalPublishQueue.cshtml", viewModel);
         }

@@ -125,6 +125,8 @@
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Mapping\ViewModelMappingExtensions.cs" />
+    <Compile Include="Models\PublishingCandidateItem.cs" />
+    <Compile Include="Services\ReportService.cs" />
     <Compile Include="ViewModels\PublishQueueViewModel.cs" />
     <Compile Include="ViewModels\PublishQueueItemViewModel.cs" />
     <Compile Include="ViewModels\LogRowViewModel.cs" />
