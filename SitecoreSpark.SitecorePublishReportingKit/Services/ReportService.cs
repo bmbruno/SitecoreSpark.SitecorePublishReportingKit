@@ -16,28 +16,37 @@ namespace SitecoreSpark.SPRK.Services
     {
         public ReportService() { }
 
-        public IEnumerable<PublishingCandidateItem> IncrementalPublishQueue_GetData(string languageCode)
+        /// <summary>
+        /// Loads data for the Incremental Publish Queue report. Utilizes Sitecore.Publishing.Pipelines.Publish.GetPublishQueue(PublishOptions) method as a source of data, then augments it based on item workflow state: only returns items in a final workflow state.
+        /// </summary>
+        /// <param name="languageCode">Language code to load. Default is "en". Must otherwise use fully-qualified language code (example: "ja-JP").</param>
+        /// <returns>Enumerable of publish candidate items.</returns>
+        public IEnumerable<PublishQueueItem> IncrementalPublishQueue_GetData(string languageCode)
         {
-            Database masterDB = Database.GetDatabase("master");
+            Database masterDB = Database.GetDatabase(Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.SourceDatabase"));
             Database webDB = Database.GetDatabase(Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.TargetDatabase"));
-            List<PublishingCandidateItem> model = new List<PublishingCandidateItem>();
+            List<PublishQueueItem> model = new List<PublishQueueItem>();
 
             PublishOptions options = new PublishOptions(masterDB, webDB, PublishMode.Incremental, Language.Parse(languageCode), DateTime.Now.AddDays(1));
-
             IEnumerable<PublishingCandidate> candidateList = PublishQueue.GetPublishQueue(options);
 
-            if (candidateList.Count() > 0)
+            if (candidateList != null && candidateList.Count() > 0)
             {
-                // Map to domain model
                 foreach (PublishingCandidate candidate in candidateList)
                 {
+                    // Get detailed item information (including workflow info for inclusion/exclusion on report)
                     Item scItem = masterDB.GetItem(itemId: candidate.ItemId);
                     IWorkflow itemWorkflow = masterDB.WorkflowProvider.GetWorkflow(scItem);
+
+                    if (itemWorkflow == null)
+                        continue;
+
                     WorkflowState state = itemWorkflow.GetState(scItem);
 
                     if (state.FinalState)
                     {
-                        model.Add(new PublishingCandidateItem()
+                        // Map to domain model
+                        model.Add(new PublishQueueItem()
                         {
                             ItemID = candidate.ItemId.Guid,
                             ItemName = scItem.Name,

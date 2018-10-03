@@ -63,12 +63,12 @@ namespace SitecoreSpark.SPRK.Mapping
         /// </summary>
         /// <param name="vm">View model to be mapped.</param>
         /// <param name="candidateItems">Enumerable list of PublishingCandidate items from the PublishQueue class.</param>
-        public static void MapToViewModel(this PublishQueueViewModel vm, IEnumerable<PublishingCandidateItem> candidateItems)
+        public static void MapToViewModel(this PublishQueueViewModel vm, IEnumerable<PublishQueueItem> candidateItems)
         {
             if (candidateItems == null)
                 return;
 
-            foreach (PublishingCandidateItem candidate in candidateItems)
+            foreach (PublishQueueItem candidate in candidateItems)
             {
                 vm.CandidateItems.Add(new PublishQueueItemViewModel()
                 {

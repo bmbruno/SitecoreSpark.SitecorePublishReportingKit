@@ -5,7 +5,7 @@ using System.Web;
 
 namespace SitecoreSpark.SPRK.Models
 {
-    public class PublishingCandidateItem
+    public class PublishQueueItem
     {
         public Guid ItemID { get; set; }
 

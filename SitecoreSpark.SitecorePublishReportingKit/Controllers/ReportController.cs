@@ -78,13 +78,9 @@ namespace SitecoreSpark.SPRK.Controllers
 
         public ActionResult IncrementalPublishQueue(string lang = "en")
         {
-            //
-            // TODO: POC code; clean up, use configs, harden, etc.
-            //
-
             // Get report data
             ReportService reportService = new ReportService();
-            IEnumerable<PublishingCandidateItem> reportData = reportService.IncrementalPublishQueue_GetData(lang);
+            IEnumerable<PublishQueueItem> reportData = reportService.IncrementalPublishQueue_GetData(lang);
 
             // Build viewmodel
             PublishQueueViewModel viewModel = new PublishQueueViewModel();
