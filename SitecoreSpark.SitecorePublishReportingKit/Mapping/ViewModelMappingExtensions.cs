@@ -72,10 +72,9 @@ namespace SitecoreSpark.SPRK.Mapping
             {
                 vm.CandidateItems.Add(new PublishQueueItemViewModel()
                 {
-                    ItemID = candidate.ItemID.ToString(),
+                    ItemID = $"{{{candidate.ItemID.ToString().ToUpper()}}}",
                     Language = candidate.Language,
                     ItemName = candidate.ItemName,
-                    Action = candidate.Action,
                     SourceDatabase = candidate.SourceDatabase,
                     Targetdatabase = candidate.TargetDatabase
                 });

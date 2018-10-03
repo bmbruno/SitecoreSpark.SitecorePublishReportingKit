@@ -45,34 +45,36 @@ namespace SitecoreSpark.SPRK.Services
                         continue;
                     }
 
-                    IWorkflow itemWorkflow = masterDB.WorkflowProvider.GetWorkflow(scItem);
-
-                    if (itemWorkflow == null)
-                        continue;
-
                     // Check for all language versions (Workflow is shared, but Workflow State may be unique across languages)
                     foreach (Language language in scItem.Languages)
                     {
                         Item scLanguageItem = masterDB.GetItem(itemId: scItem.ID, language: language);
 
-                        if (scLanguageItem.Versions.Count > 0)
-                        {
-                            WorkflowState state = itemWorkflow.GetState(scLanguageItem);
+                        // Alt language versions do not automatically have a version number, so it's worth a check before proceeded
+                        if (scLanguageItem.Versions.Count == 0)
+                            continue;
+                        
+                        IWorkflow itemWorkflow = masterDB.WorkflowProvider.GetWorkflow(scLanguageItem);
 
-                            if (state != null && state.FinalState)
+                        if (itemWorkflow == null)
+                            continue;
+
+                        WorkflowState state = itemWorkflow.GetState(scLanguageItem);
+
+                        if (state != null && state.FinalState)
+                        {
+                            // Map to domain model
+                            model.Add(new PublishQueueItem()
                             {
-                                // Map to domain model
-                                model.Add(new PublishQueueItem()
-                                {
-                                    ItemID = candidate.ItemId.Guid,
-                                    ItemName = scItem.Name,
-                                    Language = language.Name,
-                                    Action = candidate.PublishAction.ToString(),
-                                    SourceDatabase = candidate.PublishOptions.SourceDatabase.Name,
-                                    TargetDatabase = candidate.PublishOptions.TargetDatabase.Name
-                                });
-                            }
+                                ItemID = candidate.ItemId.Guid,
+                                ItemName = scItem.Name,
+                                Language = language.Name,
+                                Action = candidate.PublishAction.ToString(),
+                                SourceDatabase = candidate.PublishOptions.SourceDatabase.Name,
+                                TargetDatabase = candidate.PublishOptions.TargetDatabase.Name
+                            });
                         }
+                        
                     }
                 }
             }
