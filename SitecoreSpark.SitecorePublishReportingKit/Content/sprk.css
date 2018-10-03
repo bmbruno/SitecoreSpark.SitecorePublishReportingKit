@@ -41,6 +41,9 @@ table tbody tr:nth-child(even) { background-color: #e8e8e8; }
 .report-list li a:hover h3 { text-shadow: 1px 1px 0 #FFF; }
 .report-list li p:last-of-type { margin-bottom: 0; }
 
+.footer { text-align: center; font-size: 12px; color: #999; }
+.footer a, .footer a:visited { color: #999; }
+
 .mono { font-family: monospace; }
 .narrow-padding { padding: inherit 0.25em; }
 
