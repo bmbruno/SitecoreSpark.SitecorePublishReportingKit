@@ -37,6 +37,14 @@ namespace SitecoreSpark.SPRK.Services
                 {
                     // Get detailed item information (including workflow info for inclusion/exclusion on report)
                     Item scItem = masterDB.GetItem(itemId: candidate.ItemId);
+
+                    // If scItem is null, it likely means an item was deleted from 'master' before a publish (and still exists in the PublishQueue table); safe to ignore
+                    if (scItem == null)
+                    {
+                        Sitecore.Diagnostics.Log.Warn($"[SPRK] PublishQueue item not found in '{masterDB.Name}' database: {candidate.ItemId}.", this);
+                        continue;
+                    }
+
                     IWorkflow itemWorkflow = masterDB.WorkflowProvider.GetWorkflow(scItem);
 
                     if (itemWorkflow == null)

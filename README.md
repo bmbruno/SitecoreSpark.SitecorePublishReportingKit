@@ -47,6 +47,8 @@ The following settings are available:
 * **`SitecoreSpark.SPRK.Enabled`** - enables / disables the SPRK publish logging altogether
 * **`SitecoreSpark.SPRK.LogFolder`** - path where publish logs should be written; by default, this will be Sitecore's default location for logs - "$(dataFolder)/logs/"
 * **`SitecoreSpark.SPRK.LogPrefix`** - filename prefix for log files; all log files are appended with a dateformat (yyyyMMdd)
+* **`SitecoreSpark.SPRK.SourceDatabase`** - content management database; this will usually be `master`
+* **`SitecoreSpark.SPRK.TargetDatabase`** - published content database; this will usually be `web`
 
 The default values provided should work for most Sitecore environments.
 
