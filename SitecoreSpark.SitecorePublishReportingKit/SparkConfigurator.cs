@@ -16,7 +16,7 @@ namespace SitecoreSpark.SPRK
 
             // Services / Managers
             serviceCollection.AddSingleton<ISparkLogger, SparkLogger>();
-            serviceCollection.AddScoped<ILogManager<LogItem>, LogManager>();
+            serviceCollection.AddTransient<ILogManager<LogItem>, LogManager>();
         }
     }
 }
