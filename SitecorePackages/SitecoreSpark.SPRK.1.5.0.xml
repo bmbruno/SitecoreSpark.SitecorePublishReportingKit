@@ -1,0 +1,154 @@
+<project>
+  <Metadata>
+    <metadata>
+      <PackageName>Sitecore Publish Reporting Kit</PackageName>
+      <Author>Brandon Bruno</Author>
+      <Version>1.5.0</Version>
+      <Revision />
+      <License>
+MIT License&lt;br/&gt;
+&lt;br/&gt;
+Copyright (c) 2018 Brandon Bruno&lt;br/&gt;
+&lt;br/&gt;
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:&lt;br/&gt;
+&lt;br/&gt;
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.&lt;br/&gt;
+&lt;br/&gt;
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+	  </License>
+      <Comment />
+      <Attributes />
+      <Readme>https://github.com/bmbruno/SitecoreSpark.SitecorePublishReportingKit/blob/master/README.md</Readme>
+      <Publisher>Brandon Bruno</Publisher>
+      <PostStep />
+      <PackageID />
+    </metadata>
+  </Metadata>
+  <SaveProject>True</SaveProject>
+  <Sources>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/SitecoreSpark/SPRK/SitecoreSpark.SPRK.config</x-item>
+        <x-item>/App_Config/Include/SitecoreSpark/SPRK/SitecoreSpark.SPRK.Routing.config</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Overwrite</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Configuration - Required</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/App_Config/Include/SitecoreSpark/SPRK/SitecoreSpark.SPRK.Settings.config</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Undefined</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Configuration - User</Name>
+    </xfiles>
+    <xfiles>
+      <Entries>
+        <x-item>/bin/SitecoreSpark.SPRK.dll</x-item>
+        <x-item>/Content/SPRK/sprk.css</x-item>
+        <x-item>/Content/SPRK/sprk.font-awesome.min.css</x-item>
+        <x-item>/Content/SPRK/sprk.fontawesome-webfont.woff2</x-item>
+        <x-item>/Content/SPRK/sprk.tablesort.min.js</x-item>
+        <x-item>/Views/SPRK/Report/Find.cshtml</x-item>
+        <x-item>/Views/SPRK/Report/IncrementalPublishQueue.cshtml</x-item>
+        <x-item>/Views/SPRK/Report/Index.cshtml</x-item>
+        <x-item>/Views/SPRK/Report/PublishLogs.cshtml</x-item>
+        <x-item>/Views/SPRK/Report/ViewLog.cshtml</x-item>
+        <x-item>/Views/SPRK/Shared/_Layout.cshtml</x-item>
+        <x-item>/Views/SPRK/Shared/_MainMenu.cshtml</x-item>
+      </Entries>
+      <Converter>
+        <FileToEntryConverter>
+          <Root>/</Root>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Overwrite</ItemMode>
+                  <ItemMergeMode>Undefined</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </FileToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Disk Files</Name>
+    </xfiles>
+    <xitems>
+      <Entries>
+        <x-item>/core/sitecore/client/Applications/Launchpad/PageSettings/Buttons/Tools/SPRK Publish Reports/{7979E393-0AD8-4AEC-B02A-48A25A86D12A}/invariant/0</x-item>
+      </Entries>
+      <SkipVersions>False</SkipVersions>
+      <Converter>
+        <ItemToEntryConverter>
+          <Transforms>
+            <InstallerConfigurationTransform>
+              <Options>
+                <BehaviourOptions>
+                  <ItemMode>Overwrite</ItemMode>
+                  <ItemMergeMode>Clear</ItemMergeMode>
+                </BehaviourOptions>
+              </Options>
+            </InstallerConfigurationTransform>
+          </Transforms>
+        </ItemToEntryConverter>
+      </Converter>
+      <Include />
+      <Exclude />
+      <Name>Core Database</Name>
+    </xitems>
+  </Sources>
+  <Converter>
+    <TrivialConverter>
+      <Transforms />
+    </TrivialConverter>
+  </Converter>
+  <Include />
+  <Exclude />
+  <Name />
+</project>
