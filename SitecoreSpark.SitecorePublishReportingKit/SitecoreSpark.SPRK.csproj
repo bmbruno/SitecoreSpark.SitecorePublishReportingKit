@@ -158,7 +158,7 @@
     <Compile Include="RegisterCustomRoutes.cs" />
     <Content Include="Content\SPRK\sprk.css" />
     <Content Include="Content\SPRK\sprk.font-awesome.min.css" />
-    <Content Include="Scripts\sprk.tablesort.min.js" />
+    <Content Include="Content\SPRK\sprk.tablesort.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\SPRK\Report\Find.cshtml" />
     <Content Include="Views\SPRK\Report\PublishLogs.cshtml" />
@@ -187,7 +187,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
