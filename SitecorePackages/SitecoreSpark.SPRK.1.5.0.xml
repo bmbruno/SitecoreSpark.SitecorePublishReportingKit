@@ -30,8 +30,8 @@ SOFTWARE.
 	  </License>
       <Comment />
       <Attributes />
-      <Readme>https://github.com/bmbruno/SitecoreSpark.SitecorePublishReportingKit/blob/master/README.md</Readme>
-      <Publisher>Brandon Bruno</Publisher>
+      <Readme />
+      <Publisher>Sitecore Spark / Brandon Bruno</Publisher>
       <PostStep />
       <PackageID />
     </metadata>
