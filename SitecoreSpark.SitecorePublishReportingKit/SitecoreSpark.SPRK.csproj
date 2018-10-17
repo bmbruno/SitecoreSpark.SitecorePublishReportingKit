@@ -24,6 +24,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,6 +44,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Configy, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Configy.1.0.0\lib\net45\Configy.dll</HintPath>
+    </Reference>
+    <Reference Include="Kamsar.WebConsole, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Kamsar.WebConsole.2.0.0\lib\net40\Kamsar.WebConsole.dll</HintPath>
+    </Reference>
+    <Reference Include="MicroCHAP, Version=1.2.2.2, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MicroCHAP.1.2.2.2\lib\net45\MicroCHAP.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
       <Private>True</Private>
@@ -56,8 +66,17 @@
       <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.1.0.0\lib\netstandard1.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Rainbow, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rainbow.Core.2.0.1\lib\net452\Rainbow.dll</HintPath>
+    </Reference>
+    <Reference Include="Rainbow.Storage.Sc, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rainbow.Storage.Sc.2.0.1\lib\net452\Rainbow.Storage.Sc.dll</HintPath>
+    </Reference>
+    <Reference Include="Rainbow.Storage.Yaml, Version=2.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Rainbow.Storage.Yaml.2.0.1\lib\net452\Rainbow.Storage.Yaml.dll</HintPath>
+    </Reference>
     <Reference Include="Sitecore.Kernel, Version=10.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Sitecore.Kernel.NoReferences.8.2.170728\lib\NET452\Sitecore.Kernel.dll</HintPath>
+      <HintPath>..\packages\Sitecore.Kernel.NoReferences.8.2.160729\lib\NET452\Sitecore.Kernel.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Web.DynamicData" />
@@ -76,6 +95,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Unicorn, Version=4.0.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unicorn.Core.4.0.4\lib\net452\Unicorn.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Web.Razor">
@@ -103,6 +125,10 @@
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Mapping\ViewModelMappingExtensions.cs" />
+    <Compile Include="Models\PublishQueueItem.cs" />
+    <Compile Include="Services\ReportService.cs" />
+    <Compile Include="ViewModels\PublishQueueViewModel.cs" />
+    <Compile Include="ViewModels\PublishQueueItemViewModel.cs" />
     <Compile Include="ViewModels\LogRowViewModel.cs" />
     <Compile Include="ViewModels\LogDetailViewModel.cs" />
     <Compile Include="ViewModels\LogItemViewModel.cs" />
@@ -114,7 +140,15 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="App_Config\Include\SitecoreSpark\SPRK\SitecoreSpark.SPRK.Routing.config" />
-    <Content Include="Content\sprk.fontawesome-webfont.woff2" />
+    <Content Include="Content\SPRK\sprk.fontawesome-webfont.woff2" />
+    <Content Include="App_Config\Include\Rainbow.config" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.UI.config" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.PowerShell.config" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.DataProvider.config" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.config" />
+    <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
+    <Content Include="App_Config\Include\Unicorn\SPRK.Unicorn.config" />
+    <None Include="Properties\PublishProfiles\Local IIS - Release.pubxml" />
     <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <Compile Include="Controllers\ReportController.cs" />
     <Compile Include="Implementation\LogManager.cs" />
@@ -122,14 +156,17 @@
     <Compile Include="Models\LogItem.cs" />
     <Compile Include="Publishing\Pipelines\Publish\PublishLoggerStartProcessor.cs" />
     <Compile Include="RegisterCustomRoutes.cs" />
-    <Content Include="Content\sprk.css" />
-    <Content Include="Content\sprk.font-awesome.min.css" />
-    <Content Include="Scripts\sprk.tablesort.min.js" />
+    <Content Include="Content\SPRK\sprk.css" />
+    <Content Include="Content\SPRK\sprk.font-awesome.min.css" />
+    <Content Include="Content\SPRK\sprk.tablesort.min.js" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\SPRK\Report\Find.cshtml" />
-    <Content Include="Views\SPRK\Report\Index.cshtml" />
+    <Content Include="Views\SPRK\Report\PublishLogs.cshtml" />
     <Content Include="Views\SPRK\Report\ViewLog.cshtml" />
     <Content Include="Views\SPRK\Shared\_Layout.cshtml" />
+    <Content Include="Views\SPRK\Report\IncrementalPublishQueue.cshtml" />
+    <Content Include="Views\SPRK\Report\Index.cshtml" />
+    <Content Include="Views\SPRK\Shared\_MainMenu.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -150,7 +187,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Scripts\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

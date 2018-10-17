@@ -7,8 +7,9 @@
         /// </summary>
         /// <param name="logFolderPath">Path to folder where log file will be written.</param>
         /// <param name="logFilePrefix">Log file prefix.</param>
+        /// <param name="logBufferSize">Max number of lines allowed in the log buffer.</param>
         /// <returns>Key of the new log entry.</returns>
-        int StartLog(string logFolderPath, string logFilePrefix);
+        int StartLog(string logFolderPath, string logFilePrefix, int maxBufferSize);
 
         /// <summary>
         /// Should write the provided data to the log buffer for the given log key.
@@ -34,5 +35,11 @@
         /// </summary>
         /// <param name="logKey">Key of the log to close</param>
         void CloseLog(int logKey);
+
+        /// <summary>
+        /// Determines if the given log needs to flush based on maximum buffer size.
+        /// </summary>
+        /// <returns>True: log was flushed; false: log was not flushed.</returns>
+        bool HandleLogFlush(int logKey);
     }
 }

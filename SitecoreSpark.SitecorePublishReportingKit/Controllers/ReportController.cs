@@ -1,10 +1,14 @@
-﻿using SitecoreSpark.SPRK.Interfaces;
+﻿using System;
+using System.Web.Mvc;
+using System.Text;
+using System.Collections.Generic;
+using Sitecore.Data;
+
+using SitecoreSpark.SPRK.Interfaces;
 using SitecoreSpark.SPRK.Models;
 using SitecoreSpark.SPRK.ViewModels;
 using SitecoreSpark.SPRK.Mapping;
-using System;
-using System.Web.Mvc;
-using System.Text;
+using SitecoreSpark.SPRK.Services;
 
 namespace SitecoreSpark.SPRK.Controllers
 {
@@ -24,6 +28,11 @@ namespace SitecoreSpark.SPRK.Controllers
 
         public ActionResult Index()
         {
+            return View("~/Views/SPRK/Report/Index.cshtml");
+        }
+
+        public ActionResult PublishLogs()
+        {
             LogIndexViewModel viewModel = new LogIndexViewModel();
             LogItem[] logItems = _logManager.GetLogItems();
 
@@ -32,7 +41,7 @@ namespace SitecoreSpark.SPRK.Controllers
                 viewModel.MapToViewModel(logItems);
             }
 
-            return View("~/Views/SPRK/Report/Index.cshtml", viewModel);
+            return View("~/Views/SPRK/Report/PublishLogs.cshtml", viewModel);
         }
 
         public ActionResult ViewLog(string log, bool modified = false)
@@ -65,6 +74,26 @@ namespace SitecoreSpark.SPRK.Controllers
         {
             string csv = _logManager.GetFileForCSV(log, modified);
             return File(fileContents: new UTF8Encoding().GetBytes(csv), contentType: "text/csv", fileDownloadName: $"{log}.csv");
+        }
+
+        public ActionResult IncrementalPublishQueue()
+        {
+            // Get report data
+            ReportService reportService = new ReportService();
+            IEnumerable<PublishQueueItem> reportData = reportService.IncrementalPublishQueue_GetData();
+
+            // Build viewmodel
+            PublishQueueViewModel viewModel = new PublishQueueViewModel();
+
+            if (reportData != null)
+                viewModel.MapToViewModel(reportData);
+
+            return View("~/Views/SPRK/Report/IncrementalPublishQueue.cshtml", viewModel);
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
         }
     }
 }

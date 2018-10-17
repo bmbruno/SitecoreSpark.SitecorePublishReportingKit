@@ -1,0 +1,51 @@
+﻿@model SitecoreSpark.SPRK.ViewModels.PublishQueueViewModel
+@{
+    Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
+    ViewBag.Title = "Publish Queue - Incremental";
+}
+
+@Html.Partial("~/Views/SPRK/Shared/_MainMenu.cshtml")
+
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+    <p>This report displays items in a <strong>final workflow state</strong>.<br/>Items without any assigned workflow will not be displayed here, but may be published.</p>
+</div>
+
+<div class="container content">
+
+    <p style="margin-top: 0;">Results: @Model.CandidateItems.Count</p>
+
+    @if (Model.CandidateItems.Count > 0)
+    {
+        <table>
+            <thead>
+                <tr>
+                    <th>Item ID</th>
+                    <th>Name</th>
+                    <th>Language</th>
+                    <th>Source DB</th>
+                    <th>Target DB</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.CandidateItems)
+                {
+                    <tr>
+                        <td class="mono">@item.ItemID</td>
+                        <td style="text-align: left;">@item.ItemName</td>
+                        <td>@item.Language</td>
+                        <td>@item.SourceDatabase</td>
+                        <td>@item.Targetdatabase</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <div class="message info center">
+            Publish Queue is empty.
+        </div>
+    }
+
+</div>

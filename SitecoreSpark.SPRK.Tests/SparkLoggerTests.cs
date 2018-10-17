@@ -11,6 +11,7 @@ namespace SitecoreSpark.SPRK.Tests
     {
         internal string _logFolderPath = "./TESTLOGS";
         internal string _logFilePrefix = "SPRK.TESTLOG.";
+        internal int _logBufferSize = 1000;
 
         private SparkLogger SetupLogger()
         {
@@ -46,7 +47,7 @@ namespace SitecoreSpark.SPRK.Tests
         {
             var logger = this.SetupLogger();
 
-            int? testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix);
+            int? testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix, this._logBufferSize);
 
             Assert.IsNotNull(testKey.Value);
             Assert.IsTrue(testKey > 0);
@@ -57,7 +58,7 @@ namespace SitecoreSpark.SPRK.Tests
         {
             var logger = this.SetupLogger();
 
-            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix);
+            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix, this._logBufferSize);
             logger.AddToLog(testKey, "mode", "itemID", "result", "username", "sourceDB", "targetDB", "2018-01-01 12:00:00");
             logger.CloseLog(testKey);
 
@@ -71,7 +72,7 @@ namespace SitecoreSpark.SPRK.Tests
         {
             var logger = this.SetupLogger();
 
-            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix);
+            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix, this._logBufferSize);
             logger.CloseLog(testKey);
 
             Assert.IsFalse(Directory.Exists(this._logFolderPath));
@@ -82,7 +83,7 @@ namespace SitecoreSpark.SPRK.Tests
         {
             var logger = this.SetupLogger();
 
-            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix);
+            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix, this._logBufferSize);
             logger.AddToLog(testKey, "itemID", "mode", "result", "username", "sourceDB", "targetDB", "2018-01-01 12:00:00");
             logger.CloseLog(testKey);
 
@@ -99,7 +100,7 @@ namespace SitecoreSpark.SPRK.Tests
         {
             var logger = this.SetupLogger();
 
-            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix);
+            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix, this._logBufferSize);
             logger.AddToLog(testKey, "itemID", "mode", "result", "user|name", "sourceDB", "targetDB", "2018-01-01 12:00:00");
             logger.CloseLog(testKey);
 
@@ -117,7 +118,7 @@ namespace SitecoreSpark.SPRK.Tests
         {
             var logger = this.SetupLogger();
 
-            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix);
+            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix, this._logBufferSize);
 
             logger.AddToLog((testKey + 1), "itemID", "mode", "result", "username", "sourceDB", "targetDB", "2018-01-01 12:00:00");
         }
@@ -128,7 +129,7 @@ namespace SitecoreSpark.SPRK.Tests
         {
             var logger = this.SetupLogger();
 
-            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix);
+            int testKey = logger.StartLog(this._logFolderPath, this._logFilePrefix, this._logBufferSize);
 
             logger.CloseLog((testKey + 1));
         }
