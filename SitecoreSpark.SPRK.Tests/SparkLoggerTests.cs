@@ -10,7 +10,9 @@ namespace SitecoreSpark.SPRK.Tests
     public class SparkLoggerTests
     {
         internal string _logFolderPath = "./TESTLOGS";
-        internal string _logFilePrefix = "SPRK.TESTLOG.";
+
+        internal string _logFilePrefix = "SPRK.TESTLOG";
+      
         internal int _logBufferSize = 1000;
 
         private SparkLogger SetupLogger()
@@ -21,11 +23,14 @@ namespace SitecoreSpark.SPRK.Tests
 
         private string GetTestFilePath()
         {
-            return Path.Combine(_logFolderPath, ($"{this._logFilePrefix}{DateTime.Now.ToString("yyyyMMdd")}.txt"));
+            return Path.Combine(_logFolderPath, ($"{this._logFilePrefix}.{DateTime.Now.ToString("yyyyMMdd")}.txt"));
         }
 
         private void CleanUpTestLogFiles()
         {
+            if (!Directory.Exists(this._logFolderPath))
+                return;
+
             foreach (var filePath in Directory.GetFiles(this._logFolderPath))
             {
                 File.Delete(filePath);
@@ -76,6 +81,8 @@ namespace SitecoreSpark.SPRK.Tests
             logger.CloseLog(testKey);
 
             Assert.IsFalse(Directory.Exists(this._logFolderPath));
+
+            this.CleanUpTestLogFiles();
         }
 
         [TestMethod]
