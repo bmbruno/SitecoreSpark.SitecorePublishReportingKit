@@ -10,7 +10,9 @@ namespace SitecoreSpark.SPRK.Tests
     public class SparkLoggerTests
     {
         internal string _logFolderPath = "./TESTLOGS";
+
         internal string _logFilePrefix = "SPRK.TESTLOG";
+      
         internal int _logBufferSize = 1000;
 
         private SparkLogger SetupLogger()
