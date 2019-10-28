@@ -1,5 +1,9 @@
 # CHANGE LOG #
 
+## 2.0.0
+
+* Added support for Identity Server (Sitecore 9.1 and up)
+
 ## 1.5.0
 
  * New report: Publish Queue - Incremental
