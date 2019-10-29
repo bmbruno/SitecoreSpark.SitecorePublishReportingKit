@@ -148,6 +148,7 @@
     <Content Include="App_Config\Include\Unicorn\Unicorn.config" />
     <Content Include="App_Config\Include\Unicorn\Unicorn.AutoPublish.config" />
     <Content Include="App_Config\Include\Unicorn\SPRK.Unicorn.config" />
+    <Content Include="App_Config\Include\SitecoreSpark\SPRK\SitecoreSpark.SPRK.IdentityServer.config.disabled" />
     <None Include="Properties\PublishProfiles\Local IIS - Release.pubxml" />
     <None Include="Properties\PublishProfiles\Local IIS.pubxml" />
     <Compile Include="Controllers\ReportController.cs" />

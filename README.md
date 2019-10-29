@@ -36,7 +36,7 @@ SPRK is installed via a Sitecore package zip file. Install the package "Sitecore
 
 #### 2. Configuration ####
 
-**For Sitecore 9.1 and up**: if you're using Sitecore 9.1 or greater with _Identity Server_, you will neeed to enable the following configuration file (change the `.disabled` extension):
+**For Sitecore 9.1 and up**: if you're using Sitecore 9.1 and up with _Identity Server_, you will neeed to enable the following configuration file (remove the `.disabled` extension):
 
 `/App_Config/Include/SitecoreSpark/SPRK/SitecoreSpark.SPRK.IdentityServer.config.disabled`
 
