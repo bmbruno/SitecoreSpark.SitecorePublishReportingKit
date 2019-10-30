@@ -50,7 +50,7 @@
                 @foreach (SitecoreSpark.SPRK.ViewModels.LogRowViewModel row in Model.Rows)
                 {
                     <tr>
-                        <td class="mono narrow-padding">@row.ItemID</td>
+                        <td class="mono narrow-padding"><a href='/sitecore/shell/sitecore/content/Applications/Content Editor.aspx?id=@row.ItemID&fo=@row.ItemID' target="_blank">@row.ItemID</a></td>
                         <td>@row.Mode</td>
                         <td>@row.Result</td>
                         <td>@row.UserName</td>
