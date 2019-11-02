@@ -4,6 +4,7 @@
 
 * Added support for Identity Server (Sitecore 9.1 and up)
 * Added a link back to Content Editor for each Item ID on the log reports
+* Added Debug features: DebugMode setting for admins and basic Debug Info report (see README)
 
 ## 1.5.0
 

@@ -124,9 +124,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\DebugController.cs" />
     <Compile Include="Mapping\ViewModelMappingExtensions.cs" />
     <Compile Include="Models\PublishQueueItem.cs" />
     <Compile Include="Services\ReportService.cs" />
+    <Compile Include="ViewModels\DebugViewModel.cs" />
     <Compile Include="ViewModels\PublishQueueViewModel.cs" />
     <Compile Include="ViewModels\PublishQueueItemViewModel.cs" />
     <Compile Include="ViewModels\LogRowViewModel.cs" />
@@ -168,6 +170,7 @@
     <Content Include="Views\SPRK\Report\IncrementalPublishQueue.cshtml" />
     <Content Include="Views\SPRK\Report\Index.cshtml" />
     <Content Include="Views\SPRK\Shared\_MainMenu.cshtml" />
+    <Content Include="Views\SPRK\Debug\Index.cshtml" />
     <None Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

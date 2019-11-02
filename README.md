@@ -48,6 +48,7 @@ After installing the package, open the following configuration file and be sure 
 The following settings are available:
 
 * **`SitecoreSpark.SPRK.Enabled`** - enables / disables the SPRK publish logging altogether
+* **`SitecoreSpark.SPRK.DebugMode`** - enables / disables debug features; read more below
 * **`SitecoreSpark.SPRK.LogFolder`** - path where publish logs should be written; by default, this will be Sitecore's default location for logs - "$(dataFolder)/logs/"
 * **`SitecoreSpark.SPRK.LogPrefix`** - filename prefix for log files; all log files are appended with a dateformat (yyyyMMdd)
 * **`SitecoreSpark.SPRK.SourceDatabase`** - content management database; this will usually be `master`
@@ -113,18 +114,19 @@ serviceCollection.AddSingleton<ISparkLogger, SparkLogger>();
 serviceCollection.AddTransient<ReportController>();
 serviceCollection.AddTransient<ILogManager<LogItem>, LogManager>();
 ```
-  
-## Upcoming Features
-These features are planned for upcoming releases, but this list is subject to change at any time.
 
-* **Log customization**. Choose what fields appear in your publish log via Sitecore configuration.
-* **Automated reporting**. Hook into the publish logging process and fire off reports (email, etc.) when certain conditions are met.
-* **NuGet Package**. Make SPRK deployable from your solution.
+## Debug Mode
+
+Debug mode enables certain parts of SPRK to display additional debug information for troubleshooting purposes. The `DebugMode` setting must be set to `true` in SPRK settings (see **Configuration** section above).
+
+Current features of debug mode:
+
+* **Debug Info Summary Page** - navigate to `/sitecore/sprk/debug` for module-wide debug information
 
 ## Contact the Author
 
 For questions / comments / issues, contact me:
-* Twitter: [@BrandonMBruno](https://www.twitter.com/BrandonMBruno) or [@SitecoreSpark](https://www.twitter.com/SitecoreSpark)
+* Twitter: [@BrandonMBruno](https://www.twitter.com/BrandonMBruno)
 * Email: bmbruno [at] gmail [dot] com
  
 ## License
