@@ -15,8 +15,14 @@ namespace SitecoreSpark.SPRK.Controllers
     [Authorize]
     public class DebugController : BaseController
     {
-        public DebugController() { }
+        protected override void OnActionExecuting(ActionExecutingContext filterContext)
+        {
+            if (Convert.ToBoolean(Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.DebugMode")) != true)
+                filterContext.Result = Redirect("/sitecore");
+        }
 
+        public DebugController() { }
+        
         public ActionResult Index()
         {
             DebugViewModel viewModel = GetDebugViewModel();            
