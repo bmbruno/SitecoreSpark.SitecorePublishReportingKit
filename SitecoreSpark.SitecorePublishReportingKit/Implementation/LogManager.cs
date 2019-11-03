@@ -14,7 +14,9 @@ namespace SitecoreSpark.SPRK.Implementation
         private string _logDateFormat = "yyyyMMdd";
         private string _logPrefix;
         private string _csvHeader = "ItemID,Mode,Result,User,SourceDB,TargetDB,DateTime";
-        
+
+        public LogManager() { }
+
         /// <summary>
         /// Initalizes local variables and runs other setup tasks.
         /// </summary>
