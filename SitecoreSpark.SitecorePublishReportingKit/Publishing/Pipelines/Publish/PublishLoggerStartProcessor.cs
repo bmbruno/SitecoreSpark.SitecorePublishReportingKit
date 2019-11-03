@@ -33,6 +33,9 @@ namespace SitecoreSpark.SPRK.Publishing.Pipelines.Publish
             if (enabled)
                 context.CustomData.Add("SPRKEnabled", enabled);
 
+            // FolderPath should be mapped on the server
+            folderPath = Sitecore.IO.FileUtil.MapPath(folderPath);
+
             try
             {
                 if (context.CustomData.ContainsKey("SPRKEnabled"))

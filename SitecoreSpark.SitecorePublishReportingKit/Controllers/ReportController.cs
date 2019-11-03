@@ -23,6 +23,10 @@ namespace SitecoreSpark.SPRK.Controllers
 
             string folderPath = Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.LogFolder");
             string filePrefix = Sitecore.Configuration.Settings.GetSetting("SitecoreSpark.SPRK.LogPrefix");
+
+            // FolderPath should be mapped on the server
+            folderPath = Sitecore.IO.FileUtil.MapPath(folderPath);
+
             _logManager.Initialize(folderPath, filePrefix);
         }
 
