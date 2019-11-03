@@ -29,15 +29,11 @@ Sitecore Publish Reporting Kit (SPRK) is a tool for logging all publishing activ
 
 ## Getting Started
 
-#### 1. Installation ####
+#### 1. Installation
 
 SPRK is installed via a Sitecore package zip file. Install the package "Sitecore Publish Reporting Kit 1.5.0.zip" in the instance of Sitecore that handles content publishing. This is most likely your content management instance.
 
-#### 2. Configuration ####
-
-**For Sitecore 9.1 and up**: if you're using Sitecore 9.1 and up with _Identity Server_, you will neeed to enable the following configuration file (remove the `.disabled` extension):
-
-`/App_Config/Include/SitecoreSpark/SPRK/SitecoreSpark.SPRK.IdentityServer.config.disabled`
+#### 2. Configuration
 
 After installing the package, open the following configuration file and be sure it is configured for your environment:
 
@@ -56,7 +52,13 @@ The following settings are available:
 
 The default values provided should work for most Sitecore environments.
 
-#### 3. Verify the Installation ####
+#### 2a. Configuration for Sitecore 9.1 and up
+
+If you're using Sitecore 9.1 and up with _Identity Server_, you will neeed to enable the following configuration file (remove the `.disabled` extension):
+
+`/App_Config/Include/SitecoreSpark/SPRK/SitecoreSpark.SPRK.IdentityServer.config.disabled`
+
+#### 3. Verify the Installation
 
 To verify that the module is working properly, ensure that you see the expected log file appear once a publish is complete. If using default settings, you should see "SPRK.log.YYYYMMDD.txt" ('YYYYMMDD' matching the date) in your Sitecore log folder.
 
