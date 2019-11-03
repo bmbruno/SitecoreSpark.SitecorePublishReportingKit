@@ -1,0 +1,58 @@
+﻿@model SitecoreSpark.SPRK.ViewModels.DebugViewModel
+@{
+    Layout = "~/Views/SPRK/Shared/_Layout.cshtml";
+    ViewBag.Title = "Debug Information";
+}
+
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+</div>
+
+<div class="container content">
+
+    <h3>Settings</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Setting</th>
+                <th>Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Enabled</td>
+                <td>@Model.Enabled</td>
+            </tr>
+            <tr>
+                <td>DebugMode</td>
+                <td>@Model.DebugMode</td>
+            </tr>
+            <tr>
+                <td>LogFolder</td>
+                <td>@Model.LogFolder</td>
+            </tr>
+            <tr>
+                <td>LogPrefix</td>
+                <td>@Model.LogPrefix</td>
+            </tr>
+            <tr>
+                <td>MaxLogBufferSize</td>
+                <td>@Model.MaxLogBufferSize</td>
+            </tr>
+            <tr>
+                <td>SourceDatabase</td>
+                <td>@Model.SourceDatabase</td>
+            </tr>
+            <tr>
+                <td>TargetDatabase</td>
+                <td>@Model.TargetDatabase</td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<div class="container footer">
+    <p><a href="https://www.brandonbruno.com/sections/development/sprk.html" target="_blank">About SPRK</a></p>
+</div>

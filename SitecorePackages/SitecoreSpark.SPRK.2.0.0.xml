@@ -100,6 +100,7 @@ SOFTWARE.
         <x-item>/Views/SPRK/Report/ViewLog.cshtml</x-item>
         <x-item>/Views/SPRK/Shared/_Layout.cshtml</x-item>
         <x-item>/Views/SPRK/Shared/_MainMenu.cshtml</x-item>
+        <x-item>/Views/SPRK/Debug/Index.cshtml</x-item>
       </Entries>
       <Converter>
         <FileToEntryConverter>
