@@ -25,7 +25,7 @@ Sitecore Publish Reporting Kit (SPRK) is a tool for logging all publishing activ
 ## Requirements
 
 * .NET 4.5.2 or greater
-* Sitecore 8.2 or greater (tested on 8.2.0, 8.2.4, 8.2.6, 9.0.0, 9.0.1, 9.2.0)
+* Sitecore 8.2 or greater (tested on 8.2.0, 8.2.4, 8.2.6, 9.0.0, 9.0.1, 9.2.0, 10.0.0)
 
 ## Getting Started
 
@@ -133,4 +133,4 @@ For questions / comments / issues, contact me:
  
 ## License
 
-MIT License. See accompanying "License.txt" file.
+MIT License. See accompanying "LICENSE.txt" file.
